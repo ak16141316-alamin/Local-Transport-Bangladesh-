@@ -1,35 +1,114 @@
-/* --- MEGA HOME PAGE STYLING --- */
-.hero-huge { padding: 180px 0 100px; background: linear-gradient(to right, #000, #0a0a0a); }
-.glow-badge { background: rgba(229, 27, 35, 0.1); color: var(--primary); padding: 8px 20px; border-radius: 50px; font-size: 14px; font-weight: bold; border: 1px solid var(--primary); display: inline-block; margin-bottom: 30px; }
-.hero-text h1 { font-size: 90px; margin-bottom: 30px; }
-.hero-cta-group { display: flex; gap: 20px; }
-.btn-main-large { background: var(--primary); color: #fff; padding: 20px 40px; border-radius: 12px; font-weight: 800; border: none; font-size: 18px; cursor: pointer; }
-.btn-outline-large { background: transparent; color: #fff; padding: 20px 40px; border-radius: 12px; font-weight: 800; border: 2px solid #333; font-size: 18px; cursor: pointer; }
+/* --- PREMIUM NAVIGATION BAR UPDATES --- */
+.main-header {
+    background: rgba(10, 10, 10, 0.9); /* Glass effect */
+    backdrop-filter: blur(15px);
+    padding: 12px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
 
-.card-tabs { display: flex; justify-content: space-around; padding-bottom: 20px; border-bottom: 1px solid #eee; margin-bottom: 25px; font-weight: bold; cursor: pointer; }
-.tab-active { color: var(--primary); border-bottom: 2px solid var(--primary); }
+.flex-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-.impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; padding: 100px 0; border-bottom: 1px solid #111; }
-.impact-card h2 { font-size: 50px; color: var(--primary); }
+/* Navbar Menu Styling */
+.nav-list {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+    align-items: center;
+}
 
-.detailed-services { padding: 100px 0; }
-.section-big-title { font-size: 50px; text-align: center; margin-bottom: 80px; font-family: 'Poppins'; }
-.long-service-card { display: flex; align-items: center; background: #111; border-radius: 30px; overflow: hidden; margin-bottom: 40px; border: 1px solid #222; }
-.long-service-card.reverse { flex-direction: row-reverse; }
-.l-text { flex: 1; padding: 60px; }
-.l-text h3 { font-size: 35px; margin-bottom: 20px; }
-.l-img { flex: 1; font-size: 150px; color: #1a1a1a; display: flex; justify-content: center; align-items: center; background: #151515; height: 100%; }
+.nav-list li a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
 
-.safety-huge { background: #050505; padding: 100px 0; }
-.safe-item { display: flex; gap: 25px; margin-top: 40px; }
-.safe-item i { font-size: 35px; color: var(--primary); }
+.nav-list li a:hover {
+    color: var(--primary);
+    background: rgba(229, 27, 35, 0.05);
+}
 
-.earning-cta { padding: 100px 0; }
-.earning-box { background: linear-gradient(45deg, #1a1a1a, #000); padding: 80px; border-radius: 40px; text-align: center; border: 1px solid var(--primary); }
-.earning-box h2 { font-size: 45px; margin-bottom: 20px; }
+/* Dropdown Premium Look */
+.dropdown-content {
+    background: #151515 !important;
+    border: 1px solid #222 !important;
+    border-radius: 15px !important;
+    overflow: hidden;
+    min-width: 240px;
+}
 
-.mega-footer { background: #000; border-top: 1px solid #111; padding-top: 100px; }
-.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; padding-bottom: 80px; }
-.f-col h3 { margin-bottom: 30px; font-size: 18px; color: #fff; }
-.f-col a { display: block; color: #666; text-decoration: none; margin-bottom: 15px; transition: 0.3s; }
-.f-col a:hover { color: var(--primary); }
+/* Mobile Toggle Button (Visible only on mobile) */
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* --- FULL RESPONSIVE DESIGN (FOR ALL DEVICES) --- */
+
+@media (max-width: 1024px) {
+    .hero-text h1 { font-size: 60px; }
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-cta-group { justify-content: center; }
+    .booking-card-huge { margin: 40px auto 0; }
+}
+
+@media (max-width: 768px) {
+    /* Navbar Mobile Adjustment */
+    .desktop-menu { display: none; } /* Mobile menu logic ekhane simple rakha hoyeche */
+    .mobile-toggle { display: block; }
+    
+    .hero-huge { padding-top: 120px; }
+    .hero-text h1 { font-size: 45px; }
+    .hero-text p { font-size: 16px; margin: 0 auto 30px; }
+    
+    .impact-grid {
+        grid-template-columns: 1fr 1fr; /* 2 col on mobile */
+        gap: 20px;
+        padding: 50px 0;
+    }
+    
+    .long-service-card, .long-service-card.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .l-text { padding: 30px; }
+    .l-img { height: 200px; font-size: 100px; }
+    
+    .earning-box { padding: 40px 20px; }
+    .earning-box h2 { font-size: 30px; }
+    
+    .footer-top {
+        grid-template-columns: 1fr; /* Stacked footer */
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .f-col p { margin: 15px auto; }
+    .socials { justify-content: center; }
+    
+    .input-grid-2-col { grid-template-columns: 1fr; } /* Registration page fix */
+    .auth-container-large { padding: 30px 15px; }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 { font-size: 35px; }
+    .impact-grid { grid-template-columns: 1fr; } /* 1 col on small phones */
+    .btn-main-large, .btn-outline-large { width: 100%; padding: 15px; font-size: 16px; }
+    .hero-cta-group { flex-direction: column; }
+}

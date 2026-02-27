@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+
+:root {
+    --pathao-red: #e51b23;
+    --dark-bg: #000000;
+    --card-white: #ffffff;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body { background: var(--dark-bg); color: #fff; overflow-x: hidden; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* Navbar */
+.navbar { padding: 20px 0; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 100; }
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo { color: var(--pathao-red); font-size: 35px; font-weight: 800; letter-spacing: -2px; cursor: pointer; }
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links li { font-weight: 600; font-size: 16px; cursor: pointer; }
+.btn-login { background: var(--pathao-red); color: #fff; border: none; padding: 10px 25px; border-radius: 5px; font-weight: 600; cursor: pointer; }
+
+/* Hero Section */
+.hero { 
+    padding: 100px 0; 
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://pathao.com/wp-content/uploads/2018/12/Pathao-Website-Banner.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
+.hero-text h1 { font-size: 70px; font-weight: 800; line-height: 1; margin-bottom: 20px; }
+.hero-text h1 span { color: var(--pathao-red); }
+.hero-text p { font-size: 18px; color: #ccc; margin-bottom: 30px; }
+
+.btn-app { background: #fff; color: #000; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; margin-right: 15px; cursor: pointer; }
+
+/* Booking Card */
+.booking-card { background: var(--card-white); padding: 40px; border-radius: 15px; color: #333; }
+.booking-card h3 { font-size: 24px; margin-bottom: 20px; font-weight: 800; }
+.input-box { display: flex; align-items: center; background: #f4f4f4; padding: 12px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ddd; }
+.input-box i { color: var(--pathao-red); margin-right: 10px; }
+.input-box input, .input-box select { background: transparent; border: none; width: 100%; outline: none; font-size: 15px; }
+.btn-request { width: 100%; background: #000; color: #fff; padding: 15px; border: none; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; margin-top: 10px; }
+
+/* Services */
+.services { padding: 80px 0; text-align: center; }
+.section-title { font-size: 40px; margin-bottom: 50px; }
+.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+.service-item { background: #111; padding: 40px; border-radius: 15px; transition: 0.3s; border: 1px solid #222; }
+.service-item:hover { transform: translateY(-10px); border-color: var(--pathao-red); }
+.service-item i { font-size: 50px; color: var(--pathao-red); margin-bottom: 20px; }
+
+/* Footer */
+footer { padding: 50px 0; border-top: 1px solid #222; margin-top: 50px; }
+.footer-content { text-align: center; }

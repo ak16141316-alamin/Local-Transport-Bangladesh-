@@ -4,96 +4,82 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cholo - Smart Map Ride</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
+        :root { --primary: #e51b23; --dark: #111; }
+        body { background: #000; color: #fff; font-family: sans-serif; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        
+        /* ম্যাপের স্টাইল */
+        #map { height: 250px; width: 100%; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; }
+        
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); display: none; align-items: center;
             justify-content: center; z-index: 10000; backdrop-filter: blur(10px);
         }
         .modal-card {
-            background: #111; width: 95%; max-width: 450px; padding: 20px;
-            border-radius: 25px; border: 1px solid #333; color: white;
+            background: var(--dark); width: 95%; max-width: 500px; padding: 20px;
+            border-radius: 25px; border: 1px solid #333;
         }
-        /* ম্যাপের ডামি বক্স */
-        .map-placeholder {
-            width: 100%; height: 150px; background: #222; border-radius: 15px;
-            margin-bottom: 20px; position: relative; overflow: hidden;
-            border: 1px solid #444;
-        }
-        .map-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
-        
-        .route-info { margin-bottom: 20px; padding: 10px; border-left: 3px solid #e51b23; background: #1a1a1a; }
         .fare-box { 
             display: flex; justify-content: space-between; align-items: center; 
-            background: #e51b23; padding: 15px; border-radius: 15px;
+            background: var(--primary); padding: 15px; border-radius: 15px; margin-top: 15px;
         }
-        .fare-val { font-size: 28px; font-weight: 900; }
+        .input-group { margin-bottom: 15px; }
+        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #333; background: #222; color: #fff; }
+        .btn-main { background: var(--primary); color: #fff; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <h1>Moving <br><span>Bangladesh</span></h1>
-                <p>নির্ভুল ভাড়া এবং দ্রুত রাইড।</p>
+    <section class="container" style="padding: 50px 0;">
+        <div style="max-width: 400px; background: #111; padding: 30px; border-radius: 20px; border: 1px solid #222;">
+            <h2 style="margin-bottom: 20px; color: var(--primary);">Book a Ride</h2>
+            <div class="input-group">
+                <input type="text" id="pickup_input" list="locations" placeholder="Pickup (e.g. Gulistan)">
             </div>
-            
-            <div class="booking-card">
-                <div class="booking-header"><span class="active">Smart Booking</span></div>
-                <form>
-                    <div class="field">
-                        <label>PICKUP</label>
-                        <input type="text" id="pickup_input" list="locations" placeholder="e.g. Karwan-bazar">
-                    </div>
-                    <div class="field">
-                        <label>DROPOFF</label>
-                        <input type="text" id="dropoff_input" list="locations" placeholder="e.g. Farmgate">
-                    </div>
-                    <datalist id="locations">
-                        <option value="Karwan-bazar">
-                        <option value="Farmgate">
-                        <option value="Gulistan">
-                        <option value="Mirpur-10">
-                        <option value="Dhanmondi-32">
-                        <option value="Banani">
-                        <option value="Uttara">
-                        <option value="Shahbagh">
-                    </datalist>
-                    <button type="button" class="btn-main" onclick="calculateTrip()">CHECK FARE</button>
-                </form>
+            <div class="input-group">
+                <input type="text" id="dropoff_input" list="locations" placeholder="Dropoff (e.g. Uttara)">
             </div>
+            <datalist id="locations">
+                <option value="Gulistan">
+                <option value="Uttara">
+                <option value="Karwan-bazar">
+                <option value="Farmgate">
+                <option value="Mirpur-10">
+            </datalist>
+            <button class="btn-main" onclick="calculateTrip()">GET STARTED</button>
         </div>
     </section>
 
     <div id="fareModal" class="modal-overlay">
         <div class="modal-card">
-            <div class="map-placeholder">
-                <img src="https://api.mapbox.com/styles/v1/mapbox/dark-v10/static/89.3,23.8,10/450x150?access_token=dummy" class="map-img" alt="Map View">
-                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#e51b23;">
-                    <i class="fas fa-map-marker-alt fa-2x"></i>
-                </div>
-            </div>
+            <h3 style="text-align: center; margin-bottom: 15px;">Trip Preview</h3>
             
-            <div class="route-info">
-                <p style="font-size: 12px; color: #888;">Trip Route</p>
-                <h4 id="resRoute">Pickup to Dropoff</h4>
-                <p id="resDist" style="color: #fff; font-weight: bold; margin-top: 5px;">0.0 km</p>
+            <div id="map"></div>
+            
+            <div style="background: #222; padding: 15px; border-radius: 12px;">
+                <p id="resRoute" style="font-weight: bold; margin-bottom: 5px;"></p>
+                <p id="resDist" style="color: #aaa; font-size: 14px;"></p>
             </div>
 
             <div class="fare-box">
-                <span>Estimated Fare</span>
-                <span id="resFare" class="fare-val">৳ 0</span>
+                <span style="font-weight: bold;">Estimated Fare</span>
+                <span id="resFare" style="font-size: 24px; font-weight: 900;">৳ 0</span>
             </div>
 
-            <button class="btn-main" style="margin-top: 20px; width: 100%; background: white; color: black;" onclick="closeFare()">BACK</button>
+            <button class="btn-main" style="margin-top: 15px; background: #333;" onclick="closeFare()">BACK</button>
         </div>
     </div>
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
     <script>
+        let map; // ম্যাপ ভেরিয়েবল
+
         function calculateTrip() {
             let p = document.getElementById('pickup_input').value.trim();
             let d = document.getElementById('dropoff_input').value.trim();
@@ -102,25 +88,29 @@
 
             // সঠিক দূরত্বের ডাটাবেস
             const geoData = {
-                "Karwan-bazar-Farmgate": 1.8,
-                "Farmgate-Karwan-bazar": 1.8,
-                "Shahbagh-Farmgate": 2.4,
-                "Gulistan-Mirpur-10": 13.2,
-                "Dhanmondi-32-Banani": 6.8,
-                "Uttara-Banani": 8.5
+                "Gulistan-Uttara": 24.0, "Uttara-Gulistan": 24.0,
+                "Karwan-bazar-Farmgate": 1.8, "Farmgate-Karwan-bazar": 1.8,
+                "Gulistan-Mirpur-10": 13.5, "Mirpur-10-Gulistan": 13.5
             };
 
             let key = p + "-" + d;
-            let distance = geoData[key] || (Math.random() * (10 - 2) + 2).toFixed(1);
-
-            // আপনার লজিক: 1.8 -> 2 * 10 = 20 টাকা
+            let distance = geoData[key] || (Math.random() * (10 - 5) + 5).toFixed(1);
             let fare = Math.round(distance) * 10;
-            if (fare < 10) fare = 10;
 
             document.getElementById('resRoute').innerText = p + " to " + d;
-            document.getElementById('resDist').innerText = distance + " km Distance";
+            document.getElementById('resDist').innerText = "Total Distance: " + distance + " km";
             document.getElementById('resFare').innerText = "৳ " + fare;
+            
             document.getElementById('fareModal').style.display = 'flex';
+
+            // ম্যাপ ইনিশিয়ালাইজেশন
+            setTimeout(() => {
+                if (!map) {
+                    map = L.map('map').setView([23.8103, 90.4125], 11); // ঢাকা কোঅর্ডিনেট
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+                }
+                map.invalidateSize();
+            }, 300);
         }
 
         function closeFare() { document.getElementById('fareModal').style.display = 'none'; }

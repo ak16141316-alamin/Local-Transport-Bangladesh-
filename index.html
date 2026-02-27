@@ -3,117 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cholo - Smart Map Ride</title>
+    <title>Cholo - All Over Bangladesh</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        :root { --primary: #e51b23; --dark: #111; }
-        body { background: #000; color: #fff; font-family: sans-serif; }
-        .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+        :root { --primary: #e51b23; --dark: #000; --card: #111; }
+        body { background: var(--dark); color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; }
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 20px; }
         
-        /* ম্যাপের স্টাইল */
-        #map { height: 250px; width: 100%; border-radius: 15px; margin-bottom: 20px; border: 1px solid #333; }
-        
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); display: none; align-items: center;
-            justify-content: center; z-index: 10000; backdrop-filter: blur(10px);
-        }
-        .modal-card {
-            background: var(--dark); width: 95%; max-width: 500px; padding: 20px;
-            border-radius: 25px; border: 1px solid #333;
-        }
-        .fare-box { 
-            display: flex; justify-content: space-between; align-items: center; 
-            background: var(--primary); padding: 15px; border-radius: 15px; margin-top: 15px;
-        }
+        .booking-box { background: var(--card); padding: 30px; border-radius: 20px; border: 1px solid #222; max-width: 500px; margin: 50px auto; }
         .input-group { margin-bottom: 15px; }
-        input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #333; background: #222; color: #fff; }
-        .btn-main { background: var(--primary); color: #fff; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; }
+        label { display: block; margin-bottom: 8px; color: #888; font-size: 12px; font-weight: bold; }
+        select, input { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #333; background: #222; color: #fff; outline: none; }
+        
+        .btn-main { background: var(--primary); color: #fff; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; }
+        
+        #map { height: 250px; width: 100%; border-radius: 15px; margin-bottom: 20px; border: 1px solid #444; }
+        
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; backdrop-filter: blur(10px); }
+        .modal-card { background: var(--card); width: 95%; max-width: 500px; padding: 20px; border-radius: 25px; border: 1px solid #333; }
+        .fare-box { display: flex; justify-content: space-between; align-items: center; background: var(--primary); padding: 20px; border-radius: 15px; margin-top: 15px; }
     </style>
 </head>
 <body>
 
-    <section class="container" style="padding: 50px 0;">
-        <div style="max-width: 400px; background: #111; padding: 30px; border-radius: 20px; border: 1px solid #222;">
-            <h2 style="margin-bottom: 20px; color: var(--primary);">Book a Ride</h2>
+    <div class="container">
+        <div class="booking-box">
+            <h2 style="color: var(--primary); text-align: center; margin-bottom: 25px;">Cholo - Book Your Ride</h2>
+            
             <div class="input-group">
-                <input type="text" id="pickup_input" list="locations" placeholder="Pickup (e.g. Gulistan)">
+                <label>SELECT DIVISION</label>
+                <select id="division" onchange="updateDistricts()">
+                    <option value="">Select Division</option>
+                    <option value="Dhaka">Dhaka</option>
+                    <option value="Chattogram">Chattogram</option>
+                    <option value="Rajshahi">Rajshahi</option>
+                    <option value="Khulna">Khulna</option>
+                    <option value="Barishal">Barishal</option>
+                    <option value="Sylhet">Sylhet</option>
+                    <option value="Rangpur">Rangpur</option>
+                    <option value="Mymensingh">Mymensingh</option>
+                </select>
             </div>
+
             <div class="input-group">
-                <input type="text" id="dropoff_input" list="locations" placeholder="Dropoff (e.g. Uttara)">
+                <label>SELECT DISTRICT</label>
+                <select id="district">
+                    <option value="">First Select Division</option>
+                </select>
             </div>
-            <datalist id="locations">
-                <option value="Gulistan">
-                <option value="Uttara">
-                <option value="Karwan-bazar">
-                <option value="Farmgate">
-                <option value="Mirpur-10">
-            </datalist>
-            <button class="btn-main" onclick="calculateTrip()">GET STARTED</button>
+
+            <div class="input-group">
+                <label>SPECIFIC AREA (PICKUP)</label>
+                <input type="text" id="pickup_area" placeholder="e.g. Bus Stand or Area Name">
+            </div>
+
+            <div class="input-group">
+                <label>SPECIFIC AREA (DROP OFF)</label>
+                <input type="text" id="dropoff_area" placeholder="e.g. Market or Area Name">
+            </div>
+
+            <button class="btn-main" onclick="processBooking()">CALCULATE FARE</button>
         </div>
-    </section>
+    </div>
 
     <div id="fareModal" class="modal-overlay">
         <div class="modal-card">
-            <h3 style="text-align: center; margin-bottom: 15px;">Trip Preview</h3>
-            
             <div id="map"></div>
-            
             <div style="background: #222; padding: 15px; border-radius: 12px;">
-                <p id="resRoute" style="font-weight: bold; margin-bottom: 5px;"></p>
-                <p id="resDist" style="color: #aaa; font-size: 14px;"></p>
+                <h4 id="resTitle" style="margin: 0 0 5px 0; color: var(--primary);"></h4>
+                <p id="resPath" style="margin: 0; font-size: 13px; color: #ccc;"></p>
+                <p id="resDist" style="margin: 10px 0 0 0; font-weight: bold;"></p>
             </div>
-
             <div class="fare-box">
                 <span style="font-weight: bold;">Estimated Fare</span>
-                <span id="resFare" style="font-size: 24px; font-weight: 900;">৳ 0</span>
+                <span id="resFare" style="font-size: 28px; font-weight: 900;">৳ 0</span>
             </div>
-
-            <button class="btn-main" style="margin-top: 15px; background: #333;" onclick="closeFare()">BACK</button>
+            <button class="btn-main" style="margin-top: 15px; background: #333;" onclick="closeFare()">GO BACK</button>
         </div>
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
     <script>
-        let map; // ম্যাপ ভেরিয়েবল
+        const districtData = {
+            "Dhaka": ["Dhaka", "Gazipur", "Narayanganj", "Tangail", "Manikganj", "Munshiganj", "Narsingdi", "Faridpur", "Madaripur", "Gopalganj", "Rajbari", "Shariatpur", "Kishoreganj"],
+            "Chattogram": ["Chattogram", "Cox's Bazar", "Cumilla", "Feni", "Brahmanbaria", "Noakhali", "Chandpur", "Lakshmipur", "Rangamati", "Khagrachari", "Bandarban"],
+            "Rajshahi": ["Rajshahi", "Bogura", "Pabna", "Sirajganj", "Naogaon", "Chapai Nawabganj", "Natore", "Joypurhat"],
+            "Khulna": ["Khulna", "Jashore", "Kushtia", "Satkhira", "Bagerhat", "Chuadanga", "Meherpur", "Jhenaidah", "Magura", "Narail"],
+            "Barishal": ["Barishal", "Bhola", "Patuakhali", "Pirojpur", "Jhalokati", "Barguna"],
+            "Sylhet": ["Sylhet", "Moulvibazar", "Habiganj", "Sunamganj"],
+            "Rangpur": ["Rangpur", "Dinajpur", "Kurigram", "Gaibandha", "Nilphamari", "Panchagarh", "Thakurgaon", "Lalmonirhat"],
+            "Mymensingh": ["Mymensingh", "Jamalpur", "Netrokona", "Sherpur"]
+        };
 
-        function calculateTrip() {
-            let p = document.getElementById('pickup_input').value.trim();
-            let d = document.getElementById('dropoff_input').value.trim();
+        function updateDistricts() {
+            const divSelect = document.getElementById('division');
+            const distSelect = document.getElementById('district');
+            const selectedDiv = divSelect.value;
 
-            if (!p || !d) { alert("Please fill locations!"); return; }
+            distSelect.innerHTML = '<option value="">Select District</option>';
 
-            // সঠিক দূরত্বের ডাটাবেস
-            const geoData = {
-                "Gulistan-Uttara": 24.0, "Uttara-Gulistan": 24.0,
-                "Karwan-bazar-Farmgate": 1.8, "Farmgate-Karwan-bazar": 1.8,
-                "Gulistan-Mirpur-10": 13.5, "Mirpur-10-Gulistan": 13.5
-            };
-
-            let key = p + "-" + d;
-            let distance = geoData[key] || (Math.random() * (10 - 5) + 5).toFixed(1);
-            let fare = Math.round(distance) * 10;
-
-            document.getElementById('resRoute').innerText = p + " to " + d;
-            document.getElementById('resDist').innerText = "Total Distance: " + distance + " km";
-            document.getElementById('resFare').innerText = "৳ " + fare;
-            
-            document.getElementById('fareModal').style.display = 'flex';
-
-            // ম্যাপ ইনিশিয়ালাইজেশন
-            setTimeout(() => {
-                if (!map) {
-                    map = L.map('map').setView([23.8103, 90.4125], 11); // ঢাকা কোঅর্ডিনেট
-                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
-                }
-                map.invalidateSize();
-            }, 300);
-        }
-
-        function closeFare() { document.getElementById('fareModal').style.display = 'none'; }
-    </script>
-</body>
-</html>
+            if (selectedDiv && districtData[selectedDiv]) {
+                districtData[selectedDiv].forEach(dist => {
+                    const option

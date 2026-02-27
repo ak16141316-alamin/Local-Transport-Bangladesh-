@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
 
 :root {
-    --pathao-red: #e51b23;
+    --cholo-red: #e51b23;
     --dark-bg: #000000;
-    --card-white: #ffffff;
+    --card-bg: #ffffff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
@@ -13,158 +13,57 @@ body { background: var(--dark-bg); color: #fff; overflow-x: hidden; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
 /* Navbar */
-.navbar { padding: 20px 0; background: rgba(0,0,0,0.95); position: sticky; top: 0; z-index: 100; }
-.nav-flex { display: flex; justify-content: space-between; align-items: center; }
-.logo { color: var(--pathao-red); font-size: 35px; font-weight: 800; letter-spacing: -2px; cursor: pointer; }
-.nav-links { display: flex; list-style: none; gap: 30px; }
-.nav-links li { font-weight: 600; font-size: 16px; cursor: pointer; }
-.btn-login { background: var(--pathao-red); color: #fff; border: none; padding: 10px 25px; border-radius: 5px; font-weight: 600; cursor: pointer; }
+.navbar { padding: 15px 0; background: #000; border-bottom: 1px solid #222; position: sticky; top: 0; z-index: 1000; }
+.navbar .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { color: var(--cholo-red); font-size: 30px; font-weight: 800; letter-spacing: -1.5px; text-transform: lowercase; }
+.nav-links-desktop { display: flex; gap: 25px; }
+.nav-links-desktop a { color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; }
+.btn-login-nav { background: var(--cholo-red); color: #fff; text-decoration: none; padding: 8px 22px; border-radius: 5px; font-weight: bold; }
 
-/* Hero Section */
+/* Hero */
 .hero { 
-    padding: 100px 0; 
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://pathao.com/wp-content/uploads/2018/12/Pathao-Website-Banner.jpg');
-    background-size: cover;
-    background-position: center;
+    padding: 80px 0; 
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://pathao.com/wp-content/uploads/2018/12/Pathao-Website-Banner.jpg');
+    background-size: cover; background-position: center; min-height: 85vh; display: flex; align-items: center;
 }
-.hero-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 50px; align-items: center; }
-.hero-text h1 { font-size: 70px; font-weight: 800; line-height: 1; margin-bottom: 20px; }
-.hero-text h1 span { color: var(--pathao-red); }
-.hero-text p { font-size: 18px; color: #ccc; margin-bottom: 30px; }
-
-.btn-app { background: #fff; color: #000; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; margin-right: 15px; cursor: pointer; }
+.hero-grid { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; justify-content: space-between; }
+.hero-text { flex: 1; min-width: 300px; }
+.hero-text h1 { font-size: 65px; font-weight: 800; line-height: 1.1; }
+.hero-text h1 span { color: var(--cholo-red); }
+.hero-text p { margin: 25px 0; font-size: 18px; color: #ccc; max-width: 500px; }
+.app-badges img { height: 40px; margin-right: 10px; cursor: pointer; }
 
 /* Booking Card */
-.booking-card { background: var(--card-white); padding: 40px; border-radius: 15px; color: #333; }
-.booking-card h3 { font-size: 24px; margin-bottom: 20px; font-weight: 800; }
-.input-box { display: flex; align-items: center; background: #f4f4f4; padding: 12px; border-radius: 8px; margin-bottom: 15px; border: 1px solid #ddd; }
-.input-box i { color: var(--pathao-red); margin-right: 10px; }
-.input-box input, .input-box select { background: transparent; border: none; width: 100%; outline: none; font-size: 15px; }
-.btn-request { width: 100%; background: #000; color: #fff; padding: 15px; border: none; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; margin-top: 10px; }
+.booking-card { background: var(--card-bg); color: #333; padding: 35px; border-radius: 15px; width: 100%; max-width: 420px; box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+.booking-header { border-bottom: 2px solid #eee; margin-bottom: 25px; padding-bottom: 10px; }
+.booking-header .active { color: var(--cholo-red); font-weight: 800; border-bottom: 2px solid var(--cholo-red); padding-bottom: 11px; }
+
+.field { margin-bottom: 18px; }
+.field label { font-size: 12px; font-weight: 800; color: #777; text-transform: uppercase; display: block; margin-bottom: 5px; }
+.input-row { display: flex; align-items: center; background: #f8f8f8; padding: 12px; border-radius: 8px; border: 1px solid #ddd; }
+.input-row i { margin-right: 12px; font-size: 18px; }
+.input-row input, .input-row select { width: 100%; border: none; background: transparent; outline: none; font-size: 15px; }
+
+.btn-main { width: 100%; background: #000; color: #fff; padding: 16px; border: none; border-radius: 8px; font-weight: 700; font-size: 16px; cursor: pointer; transition: 0.3s; }
+.btn-main:hover { background: var(--cholo-red); }
 
 /* Services */
-.services { padding: 80px 0; text-align: center; }
-.section-title { font-size: 40px; margin-bottom: 50px; }
-.service-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-.service-item { background: #111; padding: 40px; border-radius: 15px; transition: 0.3s; border: 1px solid #222; }
-.service-item:hover { transform: translateY(-10px); border-color: var(--pathao-red); }
-.service-item i { font-size: 50px; color: var(--pathao-red); margin-bottom: 20px; }
+.services { padding: 70px 0; text-align: center; }
+.services h2 { font-size: 32px; margin-bottom: 40px; }
+.service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; }
+.s-card { background: #111; padding: 40px; border-radius: 15px; border: 1px solid #222; transition: 0.3s; }
+.s-card:hover { border-color: var(--cholo-red); transform: translateY(-10px); }
+.s-card i { font-size: 45px; color: var(--cholo-red); margin-bottom: 20px; }
 
 /* Footer */
-footer { padding: 50px 0; border-top: 1px solid #222; margin-top: 50px; }
-.footer-content { text-align: center; }
+footer { text-align: center; padding: 40px; border-top: 1px solid #222; color: #666; font-size: 14px; }
 
-
-/* লগইন পেজের জন্য আলাদা স্টাইল */
-.login-body {
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), 
-                url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
-    background-size: cover;
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+    .nav-links-desktop { display: none; }
+    .hero-text h1 { font-size: 45px; text-align: center; }
+    .hero-text p { text-align: center; font-size: 16px; }
+    .app-badges { text-align: center; }
+    .hero-grid { justify-content: center; }
+    .booking-card { max-width: 100%; }
 }
-
-.login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
-.login-box {
-    background: #111;
-    padding: 40px;
-    border-radius: 20px;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    border: 1px solid #333;
-    box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-}
-
-.login-box h2 {
-    font-size: 28px;
-    margin-top: 20px;
-    color: #fff;
-}
-
-.login-box p {
-    color: #888;
-    font-size: 14px;
-    margin-bottom: 30px;
-}
-
-.input-group {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    font-size: 13px;
-    color: #ccc;
-    display: block;
-    margin-bottom: 8px;
-}
-
-.input-field {
-    background: #222;
-    border: 1px solid #444;
-    padding: 12px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-}
-
-.input-field i {
-    color: #e51b23;
-    margin-right: 10px;
-}
-
-.input-field input {
-    background: transparent;
-    border: none;
-    color: #fff;
-    width: 100%;
-    outline: none;
-}
-
-.extra-links {
-    display: flex;
-    justify-content: space-between;
-    font-size: 12px;
-    color: #aaa;
-    margin-bottom: 25px;
-}
-
-.extra-links a { color: #e51b23; text-decoration: none; }
-
-.btn-login-submit {
-    width: 100%;
-    background: #e51b23;
-    color: white;
-    padding: 15px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.btn-login-submit:hover { background: #b8161c; transform: scale(1.02); }
-
-.social-login { margin-top: 30px; }
-.social-icons { display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
-.social-btn {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    border: none;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.facebook { background: #3b5998; }
-.google { background: #db4437; }
-
-.signup-text { margin-top: 25px; font-size: 14px; }
-.signup-text a { color: #e51b23; text-decoration: none; font-weight: bold; }

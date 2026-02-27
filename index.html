@@ -3,82 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cholo - Moving Bangladesh Forward</title>
+    <title>Cholo | Moving Bangladesh Together</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container flex-nav">
-            <h1 class="logo">cholo</h1>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="ride.html">Ride</a></li>
-                <li><a href="delivery.html">Delivery</a></li>
-            </ul>
-            <a href="login.html" class="btn-login-nav">Login</a>
-        </div>
-    </nav>
 
-    <section class="hero">
+    <header class="main-header">
+        <div class="container flex-nav">
+            <a href="index.html" class="logo">cholo</a>
+            <nav class="desktop-menu">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="drop-link">Daily Movement <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="ride.html"><i class="fas fa-motorcycle"></i> Cholo Bike</a></li>
+                            <li><a href="ride.html"><i class="fas fa-car"></i> Cholo Car</a></li>
+                            <li><a href="ride.html"><i class="fas fa-bicycle"></i> Cholo Rickshaw</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="drop-link">Logistics <i class="fas fa-chevron-down"></i></a>
+                        <ul class="dropdown-content">
+                            <li><a href="delivery.html"><i class="fas fa-box"></i> Personal Parcel</a></li>
+                            <li><a href="delivery.html"><i class="fas fa-truck-moving"></i> Cholo Trolley</a></li>
+                            <li><a href="delivery.html"><i class="fas fa-store"></i> Business Delivery</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Food Delivery</a></li>
+                    <li><a href="login.html">Become a Captain</a></li>
+                </ul>
+            </nav>
+            <div class="header-right">
+                <a href="login.html" class="btn-login-nav">Sign In</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-huge">
         <div class="container hero-grid">
             <div class="hero-text">
-                <h1>Moving <br><span>Bangladesh</span></h1>
-                <p>The largest ride-sharing and logistics platform in the country. We are here to make your life easier every day.</p>
-                <div class="app-badges">
-                    <img src="https://pathao.com/wp-content/uploads/2019/03/google-play-badge.png" alt="Play Store">
-                    <img src="https://pathao.com/wp-content/uploads/2019/03/app-store-badge.png" alt="App Store">
+                <div class="glow-badge">#1 Logistics Platform in BD</div>
+                <h1>Anywhere. <br><span>Everywhere.</span></h1>
+                <p>The most reliable way to travel, send parcels, and grow your business across the 64 districts of Bangladesh.</p>
+                <div class="hero-cta-group">
+                    <button class="btn-main-large">Download Now</button>
+                    <button class="btn-outline-large">Learn More</button>
                 </div>
             </div>
-            <div class="booking-card">
-                <div class="booking-header"><span class="active">Instant Booking</span></div>
-                <form>
-                    <div class="field"><label>Pickup Point</label><div class="input-row"><i class="fas fa-circle-dot"></i><input type="text" placeholder="Where are you?"></div></div>
-                    <div class="field"><label>Dropoff Point</label><div class="input-row"><i class="fas fa-location-dot"></i><input type="text" placeholder="Where to go?"></div></div>
-                    <button type="button" class="btn-main">Get Started</button>
-                </form>
+            <div class="booking-card-huge">
+                <div class="card-tabs">
+                    <span class="tab-active">Ride</span>
+                    <span>Delivery</span>
+                    <span>Trolley</span>
+                </div>
+                <div class="form-wrapper">
+                    <div class="field"><label>Where to pickup?</label><div class="input-row"><i class="fas fa-search"></i><input type="text" placeholder="Current Location"></div></div>
+                    <div class="field"><label>Where to drop?</label><div class="input-row"><i class="fas fa-map-marker-alt"></i><input type="text" placeholder="Dropoff Location"></div></div>
+                    <button class="btn-main">Calculate Estimate Fare</button>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="container" style="padding: 60px 0; text-align: center;">
-        <div class="service-grid">
-            <div class="s-card"><h2>10M+</h2><p>App Downloads</p></div>
-            <div class="s-card"><h2>500K+</h2><p>Expert Drivers</p></div>
-            <div class="s-card"><h2>64</h2><p>Districts Covered</p></div>
-        </div>
-    </section>
-
-    <section class="services container">
-        <h2 class="section-title">How it Works</h2>
-        <div class="service-grid">
-            <div class="s-card">
-                <i class="fas fa-mobile-screen"></i>
-                <h3>1. Book in App</h3>
-                <p>Select your service and set your pickup/dropoff location.</p>
-            </div>
-            <div class="s-card">
-                <i class="fas fa-user-check"></i>
-                <h3>2. Get Matched</h3>
-                <p>We will find the nearest Cholo Captain for you instantly.</p>
-            </div>
-            <div class="s-card">
-                <i class="fas fa-smile"></i>
-                <h3>3. Enjoy Trip</h3>
-                <p>Travel safely and pay easily through cash or digital payment.</p>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <section class="partners-section">
         <div class="container">
-            <div class="service-grid" style="text-align: left; padding-bottom: 30px;">
-                <div><h3>Company</h3><p>About Us</p><p>Careers</p></div>
-                <div><h3>Services</h3><p>Ride</p><p>Delivery</p></div>
-                <div><h3>Support</h3><p>Help Center</p><p>Privacy Policy</p></div>
+            <p>Empowering over 1,000,000+ Journeys daily</p>
+            <div class="logo-flex">
+                <i class="fab fa-google"></i> <i class="fab fa-apple"></i> <i class="fab fa-stripe"></i> <i class="fab fa-uber"></i> <i class="fab fa-fedex"></i>
             </div>
-            <p>&copy; 2026 Cholo Technologies Ltd.</p>
         </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container impact-grid">
+            <div class="impact-card"><h2>50M+</h2><p>Successful Rides</p></div>
+            <div class="impact-card"><h2>12M+</h2><p>Parcels Delivered</p></div>
+            <div class="impact-card"><h2>500k+</h2><p>Captain Partners</p></div>
+            <div class="impact-card"><h2>24/7</h2><p>Live Support</p></div>
+        </div>
+    </section>
+
+    <section class="detailed-services container">
+        <h2 class="section-big-title">Services Built for <span>Bangladesh</span></h2>
+        <div class="long-service-card">
+            <div class="l-text">
+                <h3>Cholo Drive</h3>
+                <p>Beat the traffic with our bikes or travel in comfort with our AC cars. We have the widest range of vehicles for every budget.</p>
+                <a href="ride.html">Book a Trip <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="l-img"><i class="fas fa-car-side"></i></div>
+        </div>
+        <div class="long-service-card reverse">
+            <div class="l-text">
+                <h3>Cholo Logistics</h3>
+                <p>From a small document to heavy factory goods, our logistics team and trolleys ensure safe movement of your assets.</p>
+                <a href="delivery.html">Learn More <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="l-img"><i class="fas fa-truck-fast"></i></div>
+        </div>
+    </section>
+
+    <section class="safety-huge">
+        <div class="container flex-safety">
+            <div class="safety-content">
+                <h2>Our <span>Safety</span> First <br>Approach</h2>
+                <div class="safe-item"><i class="fas fa-user-check"></i><div><h4>Verified Drivers</h4><p>Every captain undergoes rigorous background checks.</p></div></div>
+                <div class="safe-item"><i class="fas fa-shield-alt"></i><div><h4>Insurance Cover</h4><p>Every ride and parcel is insured against accidents.</p></div></div>
+                <div class="safe-item"><i class="fas fa-headset"></i><div><h4>SOS 24/7</h4><p>Emergency assistance is just one tap away in the app.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="earning-cta">
+        <div class="container earning-box">
+            <h2>Make Money with <span>Cholo</span></h2>
+            <p>Drive your own vehicle or manage a fleet and earn up to ৳50,000 per month.</p>
+            <button class="btn-main-large">Register as a Captain</button>
+        </div>
+    </section>
+
+    <footer class="mega-footer">
+        <div class="container footer-top">
+            <div class="f-col">
+                <h1 class="logo">cholo</h1>
+                <p>Moving millions of people and parcels with love and technology.</p>
+                <div class="socials"><i class="fab fa-facebook"></i> <i class="fab fa-linkedin"></i> <i class="fab fa-youtube"></i></div>
+            </div>
+            <div class="f-col"><h3>Services</h3><a href="ride.html">Ride Sharing</a><a href="delivery.html">Logistics</a><a href="#">Trolley</a></div>
+            <div class="f-col"><h3>About</h3><a href="#">Our Story</a><a href="#">Safety</a><a href="#">Careers</a></div>
+            <div class="f-col"><h3>Help</h3><a href="#">Support</a><a href="#">Terms</a><a href="#">Privacy</a></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2026 Cholo Technologies. Designed for Realme C85 Pro.</p></div>
     </footer>
+
 </body>
 </html>

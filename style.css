@@ -1,128 +1,295 @@
-/* --- Professional Auth Page Styling --- */
-.auth-page {
-    background: radial-gradient(circle at center, #1a1a1a, #000);
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 20px;
+/* Google Fonts - Inter & Poppins for a tech look */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@700;900&display=swap');
+
+:root {
+    --primary: #e51b23; /* Cholo/Pathao Red */
+    --accent: #2ecc71;  /* Success Green */
+    --dark: #0f0f0f;    /* Deep Black */
+    --light-dark: #1a1a1a; /* Card Black */
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --glass: rgba(255, 255, 255, 0.03);
 }
 
-.auth-wrapper {
-    width: 100%;
-    max-width: 800px; /* Boro registration form-er jonno chora kora hoyeche */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
-.auth-container-large {
-    background: var(--light-dark);
-    border-radius: 30px;
-    border: 1px solid rgba(255,255,255,0.08);
-    padding: 50px;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+body {
+    background-color: var(--dark);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
 }
 
-.auth-header {
+.container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+/* --- Clean Modern Navbar --- */
+.navbar {
+    background: rgba(15, 15, 15, 0.8);
+    backdrop-filter: blur(15px); /* Glassmorphism effect */
+    padding: 18px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.flex-nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 40px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    padding-bottom: 20px;
 }
 
-.auth-toggle {
-    background: rgba(255,255,255,0.03);
-    padding: 5px;
-    border-radius: 50px;
-}
-
-.auth-toggle button {
-    padding: 10px 25px;
-    border: none;
-    background: transparent;
-    color: var(--text-muted);
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 50px;
+.logo {
+    font-family: 'Poppins', sans-serif;
+    color: var(--primary);
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    text-transform: lowercase;
+    text-decoration: none;
     transition: 0.3s;
 }
 
-.auth-toggle button.active {
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+}
+
+.nav-links li a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.nav-links li a:hover {
+    color: var(--primary);
+}
+
+.btn-login-nav {
     background: var(--primary);
     color: #fff;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 50px; /* Rounded pill style */
+    font-weight: 700;
+    font-size: 14px;
+    transition: 0.3s;
+    box-shadow: 0 4px 15px rgba(229, 27, 35, 0.3);
 }
 
-.auth-form {
-    display: none;
-    animation: fadeIn 0.5s ease;
+.btn-login-nav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 27, 35, 0.5);
 }
 
-.auth-form.active {
+/* --- Premium Hero Section --- */
+.hero {
+    padding: 120px 0;
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    background: radial-gradient(circle at top right, rgba(229, 27, 35, 0.05), transparent),
+                linear-gradient(to bottom, var(--dark), #050505);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 25px;
+    letter-spacing: -2px;
+}
+
+.hero-text h1 span {
+    color: var(--primary);
+    background: linear-gradient(to right, #e51b23, #ff4d4d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-text p {
+    font-size: 19px;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    max-width: 550px;
+}
+
+/* --- Modern Booking Card --- */
+.booking-card {
+    background: var(--light-dark);
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.05);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.booking-header {
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.booking-header::before {
+    content: '';
+    width: 4px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+.field {
+    margin-bottom: 25px;
+}
+
+.field label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 8px;
     display: block;
 }
 
-.form-title {
-    margin-bottom: 30px;
-}
-
-.form-title h2 {
-    font-size: 30px;
-    color: #fff;
-    font-family: 'Poppins', sans-serif;
-}
-
-.input-grid-2-col {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-}
-
-.form-help {
+.input-row {
     display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-    margin-bottom: 25px;
-    color: var(--text-muted);
+    align-items: center;
+    background: rgba(255,255,255,0.03);
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.3s;
 }
 
-.form-help a { color: var(--primary); text-decoration: none; }
-
-/* Password Strength Meter Styling */
-.password-strength-section {
-    margin-top: 10px;
+.input-row:focus-within {
+    border-color: var(--primary);
+    background: rgba(255,255,255,0.05);
 }
 
-.strength-meter {
-    margin-top: 10px;
+.input-row i {
+    color: var(--primary);
+    margin-right: 15px;
+    font-size: 18px;
 }
 
-.meter-bar {
-    height: 4px;
-    background: #333;
-    border-radius: 10px;
-    overflow: hidden;
+.input-row input, .input-row select {
+    border: none;
+    background: transparent;
+    color: #fff;
+    width: 100%;
+    outline: none;
+    font-size: 16px;
 }
 
-.meter-bar .fill {
-    height: 100%;
-    width: 60%; /* This can be animated with JS later */
+.btn-main {
+    width: 100%;
     background: var(--primary);
+    color: #fff;
+    padding: 18px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-#p-msg {
-    font-size: 11px;
+.btn-main:hover {
+    background: #c4141a;
+    transform: scale(1.02);
+}
+
+/* --- Services & Cards --- */
+.services {
+    padding: 100px 0;
+}
+
+.section-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 42px;
+    font-weight: 900;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.s-card {
+    background: var(--glass);
+    padding: 50px 40px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.05);
+    transition: 0.4s;
+    text-align: center;
+}
+
+.s-card:hover {
+    background: rgba(229, 27, 35, 0.05);
+    border-color: rgba(229, 27, 35, 0.2);
+    transform: translateY(-10px);
+}
+
+.s-card i {
+    font-size: 50px;
+    color: var(--primary);
+    margin-bottom: 25px;
+}
+
+.s-card h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+.s-card p {
     color: var(--text-muted);
-    margin-top: 5px;
+    font-size: 15px;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* --- Responsive Adjustments --- */
+@media (max-width: 992px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-text h1 { font-size: 50px; }
+    .hero-text p { margin: 0 auto 40px; }
+    .booking-card { max-width: 500px; margin: 0 auto; }
+    .nav-links { display: none; } /* Hide for mobile menu simplicity */
 }
 
-/* Mobile Responsive for Auth */
-@media (max-width: 768px) {
-    .input-grid-2-col { grid-template-columns: 1fr; }
-    .auth-container-large { padding: 30px 20px; }
-    .auth-header { flex-direction: column; gap: 20px; }
-    }
+footer {
+    padding: 60px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+}

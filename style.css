@@ -1,114 +1,94 @@
-/* --- PREMIUM NAVIGATION BAR UPDATES --- */
+/* --- Global Reset & Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@700;900&display=swap');
+
+:root {
+    --primary: #e51b23;
+    --dark: #000000;
+    --light-dark: #111111;
+    --text-muted: #888888;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+body { background: var(--dark); color: #fff; line-height: 1.6; overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+/* --- Fixed Navigation Bar & Dropdown --- */
 .main-header {
-    background: rgba(10, 10, 10, 0.9); /* Glass effect */
-    backdrop-filter: blur(15px);
-    padding: 12px 0;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 15px 0;
     position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    top: 0; width: 100%; z-index: 9999;
+    border-bottom: 1px solid #222;
 }
 
-.flex-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+.flex-nav { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: 'Poppins', sans-serif; color: var(--primary); font-size: 28px; text-decoration: none; font-weight: 900; }
 
-/* Navbar Menu Styling */
-.nav-list {
-    display: flex;
-    gap: 25px;
-    list-style: none;
-    align-items: center;
-}
+.nav-list { display: flex; list-style: none; gap: 20px; }
+.nav-list li { position: relative; }
+.nav-list li a { color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; padding: 10px; }
 
-.nav-list li a {
-    color: #e0e0e0;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: 0.3s;
-    padding: 8px 12px;
-    border-radius: 8px;
-}
-
-.nav-list li a:hover {
-    color: var(--primary);
-    background: rgba(229, 27, 35, 0.05);
-}
-
-/* Dropdown Premium Look */
+/* Dropdown Logic */
 .dropdown-content {
-    background: #151515 !important;
-    border: 1px solid #222 !important;
-    border-radius: 15px !important;
-    overflow: hidden;
-    min-width: 240px;
+    position: absolute; top: 100%; left: 0; background: #1a1a1a;
+    width: 200px; padding: 10px 0; border-radius: 8px;
+    display: none; border: 1px solid #333;
 }
+.dropdown:hover .dropdown-content { display: block; }
+.dropdown-content li a { display: block; padding: 10px 20px; }
+.dropdown-content li a:hover { background: var(--primary); }
 
-/* Mobile Toggle Button (Visible only on mobile) */
-.mobile-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-    cursor: pointer;
-}
+.btn-login-nav { background: var(--primary); color: #fff; padding: 8px 20px; border-radius: 5px; text-decoration: none; font-weight: 800; }
 
-/* --- FULL RESPONSIVE DESIGN (FOR ALL DEVICES) --- */
+/* --- Hero Section Adjustment --- */
+.hero-huge { padding: 150px 0 80px; text-align: left; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+.hero-text h1 { font-size: 70px; font-family: 'Poppins'; line-height: 1.1; margin-bottom: 20px; }
+.hero-text h1 span { color: var(--primary); }
+.hero-cta-group { display: flex; gap: 15px; margin-top: 30px; }
 
-@media (max-width: 1024px) {
-    .hero-text h1 { font-size: 60px; }
+/* --- Cards & Forms --- */
+.booking-card-huge { background: #fff; padding: 30px; border-radius: 20px; color: #333; }
+.field { margin-bottom: 20px; }
+.field label { font-size: 12px; font-weight: 800; color: #666; display: block; margin-bottom: 5px; }
+.input-row { display: flex; align-items: center; background: #f5f5f5; padding: 12px; border-radius: 8px; border: 1px solid #ddd; }
+.input-row i { margin-right: 10px; color: var(--primary); }
+.input-row input { border: none; background: transparent; width: 100%; outline: none; }
+.btn-main { width: 100%; background: var(--dark); color: #fff; padding: 15px; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; }
+
+/* --- Statistics & Impact --- */
+.stats-section { padding: 60px 0; background: #080808; text-align: center; }
+.impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.impact-card h2 { font-size: 40px; color: var(--primary); }
+
+/* --- Detailed Services (Big Cards) --- */
+.long-service-card { display: flex; background: var(--light-dark); margin-bottom: 30px; border-radius: 20px; overflow: hidden; align-items: center; }
+.long-service-card.reverse { flex-direction: row-reverse; }
+.l-text { padding: 50px; flex: 1; }
+.l-img { flex: 1; font-size: 100px; text-align: center; background: #151515; padding: 50px; }
+
+/* --- Footer --- */
+.mega-footer { padding: 80px 0 30px; border-top: 1px solid #222; }
+.footer-top { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
+.f-col h3 { margin-bottom: 20px; color: var(--primary); }
+.f-col a { display: block; color: #888; text-decoration: none; margin-bottom: 10px; }
+
+/* --- RESPONSIVE FIXES --- */
+@media (max-width: 992px) {
     .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .hero-text h1 { font-size: 50px; }
     .hero-cta-group { justify-content: center; }
-    .booking-card-huge { margin: 40px auto 0; }
+    .impact-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
-    /* Navbar Mobile Adjustment */
-    .desktop-menu { display: none; } /* Mobile menu logic ekhane simple rakha hoyeche */
-    .mobile-toggle { display: block; }
-    
-    .hero-huge { padding-top: 120px; }
-    .hero-text h1 { font-size: 45px; }
-    .hero-text p { font-size: 16px; margin: 0 auto 30px; }
-    
-    .impact-grid {
-        grid-template-columns: 1fr 1fr; /* 2 col on mobile */
-        gap: 20px;
-        padding: 50px 0;
-    }
-    
-    .long-service-card, .long-service-card.reverse {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .l-text { padding: 30px; }
-    .l-img { height: 200px; font-size: 100px; }
-    
-    .earning-box { padding: 40px 20px; }
-    .earning-box h2 { font-size: 30px; }
-    
-    .footer-top {
-        grid-template-columns: 1fr; /* Stacked footer */
-        text-align: center;
-        gap: 30px;
-    }
-    
-    .f-col p { margin: 15px auto; }
-    .socials { justify-content: center; }
-    
-    .input-grid-2-col { grid-template-columns: 1fr; } /* Registration page fix */
-    .auth-container-large { padding: 30px 15px; }
+    .nav-list { display: none; } /* Mobile toggle button is needed for full mobile menu */
+    .long-service-card, .long-service-card.reverse { flex-direction: column; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .hero-text h1 { font-size: 40px; }
 }
 
 @media (max-width: 480px) {
-    .hero-text h1 { font-size: 35px; }
-    .impact-grid { grid-template-columns: 1fr; } /* 1 col on small phones */
-    .btn-main-large, .btn-outline-large { width: 100%; padding: 15px; font-size: 16px; }
-    .hero-cta-group { flex-direction: column; }
+    .impact-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; text-align: center; }
 }

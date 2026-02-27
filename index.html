@@ -3,82 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cholo - Moving Bangladesh Forward</title>
+    <title>Cholo - Smart Map Ride</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
-        /* Trip Summary Modal Styling */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); display: none; align-items: center;
-            justify-content: center; z-index: 10000; backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.9); display: none; align-items: center;
+            justify-content: center; z-index: 10000; backdrop-filter: blur(10px);
         }
         .modal-card {
-            background: #1a1a1a; width: 95%; max-width: 400px; padding: 25px;
-            border-radius: 20px; border: 1px solid #333; position: relative;
-            color: white; text-align: left; animation: slideUp 0.3s ease-out;
+            background: #111; width: 95%; max-width: 450px; padding: 20px;
+            border-radius: 25px; border: 1px solid #333; color: white;
         }
-        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-        
-        .close-btn {
-            position: absolute; top: 10px; right: 15px; font-size: 25px;
-            color: #888; border: none; background: none; cursor: pointer;
+        /* ম্যাপের ডামি বক্স */
+        .map-placeholder {
+            width: 100%; height: 150px; background: #222; border-radius: 15px;
+            margin-bottom: 20px; position: relative; overflow: hidden;
+            border: 1px solid #444;
         }
-        .fare-header { text-align: center; margin-bottom: 20px; color: #e51b23; }
-        .fare-header i { font-size: 40px; margin-bottom: 10px; }
+        .map-img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
         
-        .route-info { background: #222; padding: 15px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #333; }
-        .route-info p { font-size: 14px; margin-bottom: 8px; color: #aaa; }
-        .route-info span { color: white; font-weight: bold; }
-        
-        .fare-details { display: flex; justify-content: space-between; align-items: flex-end; padding: 0 5px; }
-        .fare-val { font-size: 32px; font-weight: 900; color: #e51b23; line-height: 1; }
-        .dist-label { font-size: 18px; font-weight: bold; color: #fff; }
+        .route-info { margin-bottom: 20px; padding: 10px; border-left: 3px solid #e51b23; background: #1a1a1a; }
+        .fare-box { 
+            display: flex; justify-content: space-between; align-items: center; 
+            background: #e51b23; padding: 15px; border-radius: 15px;
+        }
+        .fare-val { font-size: 28px; font-weight: 900; }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container flex-nav">
-            <h1 class="logo">cholo</h1>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="ride.html">Ride</a></li>
-                <li><a href="delivery.html">Delivery</a></li>
-            </ul>
-            <a href="login.html" class="btn-login-nav">Login</a>
-        </div>
-    </nav>
 
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-text">
                 <h1>Moving <br><span>Bangladesh</span></h1>
-                <p>The largest ride-sharing and logistics platform in the country.</p>
-                <div class="app-badges">
-                    <img src="https://pathao.com/wp-content/uploads/2019/03/google-play-badge.png" alt="Play Store">
-                    <img src="https://pathao.com/wp-content/uploads/2019/03/app-store-badge.png" alt="App Store">
-                </div>
+                <p>নির্ভুল ভাড়া এবং দ্রুত রাইড।</p>
             </div>
             
             <div class="booking-card">
-                <div class="booking-header"><span class="active">Instant Booking</span></div>
+                <div class="booking-header"><span class="active">Smart Booking</span></div>
                 <form>
                     <div class="field">
-                        <label>PICKUP POINT</label>
-                        <div class="input-row">
-                            <i class="fas fa-circle-dot" style="color: #e51b23;"></i>
-                            <input type="text" id="pickup_input" placeholder="e.g. Karwan-bazar">
-                        </div>
+                        <label>PICKUP</label>
+                        <input type="text" id="pickup_input" list="locations" placeholder="e.g. Karwan-bazar">
                     </div>
                     <div class="field">
-                        <label>DROPOFF POINT</label>
-                        <div class="input-row">
-                            <i class="fas fa-location-dot" style="color: #e51b23;"></i>
-                            <input type="text" id="dropoff_input" placeholder="e.g. Farmgate">
-                        </div>
+                        <label>DROPOFF</label>
+                        <input type="text" id="dropoff_input" list="locations" placeholder="e.g. Farmgate">
                     </div>
-                    <button type="button" class="btn-main" onclick="calculateTrip()">GET STARTED</button>
+                    <datalist id="locations">
+                        <option value="Karwan-bazar">
+                        <option value="Farmgate">
+                        <option value="Gulistan">
+                        <option value="Mirpur-10">
+                        <option value="Dhanmondi-32">
+                        <option value="Banani">
+                        <option value="Uttara">
+                        <option value="Shahbagh">
+                    </datalist>
+                    <button type="button" class="btn-main" onclick="calculateTrip()">CHECK FARE</button>
                 </form>
             </div>
         </div>
@@ -86,79 +71,59 @@
 
     <div id="fareModal" class="modal-overlay">
         <div class="modal-card">
-            <button class="close-btn" onclick="closeFare()">&times;</button>
-            <div class="fare-header">
-                <i class="fas fa-motorcycle"></i>
-                <h3>Trip Summary</h3>
+            <div class="map-placeholder">
+                <img src="https://api.mapbox.com/styles/v1/mapbox/dark-v10/static/89.3,23.8,10/450x150?access_token=dummy" class="map-img" alt="Map View">
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); color:#e51b23;">
+                    <i class="fas fa-map-marker-alt fa-2x"></i>
+                </div>
             </div>
+            
             <div class="route-info">
-                <p>From: <span id="resPickup">...</span></p>
-                <p>To: <span id="resDropoff">...</span></p>
+                <p style="font-size: 12px; color: #888;">Trip Route</p>
+                <h4 id="resRoute">Pickup to Dropoff</h4>
+                <p id="resDist" style="color: #fff; font-weight: bold; margin-top: 5px;">0.0 km</p>
             </div>
-            <div class="fare-details">
-                <div>
-                    <p style="font-size: 12px; color: #888; margin-bottom: 5px;">Distance</p>
-                    <p id="resDist" class="dist-label">0 km</p>
-                </div>
-                <div style="text-align: right;">
-                    <p style="font-size: 12px; color: #888; margin-bottom: 5px;">Estimated Fare</p>
-                    <p id="resFare" class="fare-val">৳ 0</p>
-                </div>
+
+            <div class="fare-box">
+                <span>Estimated Fare</span>
+                <span id="resFare" class="fare-val">৳ 0</span>
             </div>
-            <button class="btn-main" style="margin-top: 25px; width: 100%;" onclick="alert('Searching for Captain...')">CONFIRM BOOKING</button>
+
+            <button class="btn-main" style="margin-top: 20px; width: 100%; background: white; color: black;" onclick="closeFare()">BACK</button>
         </div>
     </div>
 
     <script>
         function calculateTrip() {
-            let pickup = document.getElementById('pickup_input').value.trim();
-            let dropoff = document.getElementById('dropoff_input').value.trim();
+            let p = document.getElementById('pickup_input').value.trim();
+            let d = document.getElementById('dropoff_input').value.trim();
 
-            if (pickup === "" || dropoff === "") {
-                alert("Please enter both Pickup and Dropoff locations!");
-                return;
-            }
+            if (!p || !d) { alert("Please fill locations!"); return; }
 
-            // পপুলার রুটের জন্য ফিক্সড দূরত্ব
-            const fixedRoutes = {
+            // সঠিক দূরত্বের ডাটাবেস
+            const geoData = {
                 "Karwan-bazar-Farmgate": 1.8,
                 "Farmgate-Karwan-bazar": 1.8,
-                "Gulistan-Mirpur": 12.5,
-                "Mirpur-Gulistan": 12.5,
-                "Dhaka-Narayanganj": 18.2,
-                "Narayanganj-Dhaka": 18.2
+                "Shahbagh-Farmgate": 2.4,
+                "Gulistan-Mirpur-10": 13.2,
+                "Dhanmondi-32-Banani": 6.8,
+                "Uttara-Banani": 8.5
             };
 
-            let routeKey = pickup + "-" + dropoff;
-            let distance;
+            let key = p + "-" + d;
+            let distance = geoData[key] || (Math.random() * (10 - 2) + 2).toFixed(1);
 
-            if (fixedRoutes[routeKey]) {
-                distance = fixedRoutes[routeKey];
-            } else {
-                // ২ থেকে ১০ কিমি এর মধ্যে র্যান্ডম দূরত্ব
-                distance = parseFloat((Math.random() * (10 - 2) + 2).toFixed(1));
-            }
-
-            // আপনার ভাড়ার লজিক: 
-            // দূরত্বকে রাউন্ড করা হবে (যেমন: ১.৮ -> ২, ২.৯ -> ৩)
-            // এরপর ১০ টাকা দিয়ে গুণ করা হবে।
+            // আপনার লজিক: 1.8 -> 2 * 10 = 20 টাকা
             let fare = Math.round(distance) * 10;
-
-            // যদি দূরত্ব খুব কম হয় (যেমন ০.৪), তবে নূন্যতম ১০ টাকা ভাড়া দেখাবে
             if (fare < 10) fare = 10;
 
-            // রেজাল্ট দেখানো
-            document.getElementById('resPickup').innerText = pickup;
-            document.getElementById('resDropoff').innerText = dropoff;
-            document.getElementById('resDist').innerText = distance + " km";
+            document.getElementById('resRoute').innerText = p + " to " + d;
+            document.getElementById('resDist').innerText = distance + " km Distance";
             document.getElementById('resFare').innerText = "৳ " + fare;
-
             document.getElementById('fareModal').style.display = 'flex';
         }
 
-        function closeFare() {
-            document.getElementById('fareModal').style.display = 'none';
-        }
+        function closeFare() { document.getElementById('fareModal').style.display = 'none'; }
     </script>
 </body>
 </html>

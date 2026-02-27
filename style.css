@@ -1,96 +1,128 @@
-/* --- New Home Page Additions --- */
-.badge-new {
-    display: inline-block;
-    background: rgba(229, 27, 35, 0.1);
-    color: var(--primary);
-    padding: 6px 15px;
-    border-radius: 50px;
-    font-size: 12px;
-    font-weight: 800;
-    margin-bottom: 20px;
-    border: 1px solid rgba(229, 27, 35, 0.2);
-}
-
-.partners {
-    padding: 50px 0;
-    text-align: center;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.partners p { color: var(--text-muted); font-size: 13px; margin-bottom: 25px; }
-
-.partner-logos {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    font-size: 30px;
-    color: #333;
-    filter: grayscale(1);
-    opacity: 0.5;
-}
-
-.s-icon {
-    width: 60px;
-    height: 60px;
-    background: var(--primary);
-    border-radius: 15px;
+/* --- Professional Auth Page Styling --- */
+.auth-page {
+    background: radial-gradient(circle at center, #1a1a1a, #000);
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto 20px;
-    font-size: 25px;
+    padding: 40px 20px;
+}
+
+.auth-wrapper {
+    width: 100%;
+    max-width: 800px; /* Boro registration form-er jonno chora kora hoyeche */
+}
+
+.auth-container-large {
+    background: var(--light-dark);
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 50px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+}
+
+.auth-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 20px;
+}
+
+.auth-toggle {
+    background: rgba(255,255,255,0.03);
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.auth-toggle button {
+    padding: 10px 25px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: 0.3s;
+}
+
+.auth-toggle button.active {
+    background: var(--primary);
     color: #fff;
 }
 
-.s-link {
-    display: inline-block;
-    margin-top: 20px;
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 14px;
+.auth-form {
+    display: none;
+    animation: fadeIn 0.5s ease;
 }
 
-.safety-banner {
-    padding: 100px 0;
-    background: #0a0a0a;
+.auth-form.active {
+    display: block;
 }
 
-.safety-list { list-style: none; margin-top: 30px; }
-.safety-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; color: var(--text-muted); }
-.safety-list li i { color: var(--accent); }
-
-/* --- Footer Design --- */
-.main-footer {
-    padding: 80px 0 30px;
-    background: #050505;
+.form-title {
+    margin-bottom: 30px;
 }
 
-.footer-grid {
+.form-title h2 {
+    font-size: 30px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.input-grid-2-col {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 50px;
-    padding-bottom: 50px;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-.footer-brand p { color: var(--text-muted); margin: 20px 0; max-width: 300px; }
-
-.social-links { display: flex; gap: 20px; font-size: 20px; color: #555; }
-
-.footer-links h3 { font-size: 16px; margin-bottom: 25px; }
-.footer-links a { display: block; color: var(--text-muted); text-decoration: none; margin-bottom: 12px; transition: 0.3s; }
-.footer-links a:hover { color: var(--primary); }
-
-.footer-bottom {
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding-top: 30px;
-    text-align: center;
-    font-size: 12px;
-    color: #444;
+.form-help {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    margin-bottom: 25px;
+    color: var(--text-muted);
 }
 
+.form-help a { color: var(--primary); text-decoration: none; }
+
+/* Password Strength Meter Styling */
+.password-strength-section {
+    margin-top: 10px;
+}
+
+.strength-meter {
+    margin-top: 10px;
+}
+
+.meter-bar {
+    height: 4px;
+    background: #333;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.meter-bar .fill {
+    height: 100%;
+    width: 60%; /* This can be animated with JS later */
+    background: var(--primary);
+}
+
+#p-msg {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsive for Auth */
 @media (max-width: 768px) {
-    .footer-grid { grid-template-columns: 1fr; text-align: center; }
-    .footer-brand p { margin: 20px auto; }
-    .social-links { justify-content: center; }
-}
+    .input-grid-2-col { grid-template-columns: 1fr; }
+    .auth-container-large { padding: 30px 20px; }
+    .auth-header { flex-direction: column; gap: 20px; }
+    }

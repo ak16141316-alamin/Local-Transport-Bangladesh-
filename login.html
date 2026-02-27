@@ -3,113 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cholo - Login & Register</title>
+    <title>Login | Cholo</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="auth-body">
-
-    <div class="auth-container">
-        <div class="auth-box">
-            <h1 class="logo">cholo</h1>
-            
-            <div class="auth-tabs">
-                <button id="loginTab" class="tab-btn active" onclick="showAuth('login')">Login</button>
-                <button id="registerTab" class="tab-btn" onclick="showAuth('register')">Register</button>
-            </div>
-
-            <form id="loginForm" class="auth-form">
-                <h2>Welcome Back</h2>
-                <p>Login to your Cholo account</p>
-                
-                <div class="input-group">
-                    <label>Email or Phone</label>
-                    <div class="input-field">
-                        <i class="fas fa-user"></i>
-                        <input type="text" placeholder="Enter email or phone">
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label>Password</label>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Enter password">
-                    </div>
-                </div>
-
-                <div class="form-options">
-                    <label><input type="checkbox"> Remember me</label>
-                    <a href="#">Forgot Password?</a>
-                </div>
-
-                <button type="submit" class="btn-auth">Login</button>
-            </form>
-
-            <form id="registerForm" class="auth-form" style="display: none;">
-                <h2>Create Account</h2>
-                <p>Join Cholo for faster rides</p>
-                
-                <div class="input-group">
-                    <label>Full Name</label>
-                    <div class="input-field">
-                        <i class="fas fa-id-card"></i>
-                        <input type="text" placeholder="Enter your name">
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label>Phone Number</label>
-                    <div class="input-field">
-                        <i class="fas fa-phone"></i>
-                        <input type="text" placeholder="Enter phone number">
-                    </div>
-                </div>
-
-                <div class="input-group">
-                    <label>Password</label>
-                    <div class="input-field">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" placeholder="Create password">
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-auth">Register Now</button>
-            </form>
-
-            <div class="social-login">
-                <span>Or continue with</span>
-                <div class="social-icons">
-                    <i class="fab fa-google"></i>
-                    <i class="fab fa-facebook-f"></i>
-                    <i class="fab fa-apple"></i>
-                </div>
-            </div>
-            
-            <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+<body class="center-body">
+    <div class="booking-card auth-box">
+        <h1 class="logo">cholo</h1>
+        <div class="tabs">
+            <button class="active">Login</button>
+            <button>Register</button>
         </div>
+        <form>
+            <div class="field"><label>Email or Phone</label><div class="input-row"><i class="fas fa-user"></i><input type="text" placeholder="Enter mobile or email"></div></div>
+            <div class="field"><label>Password</label><div class="input-row"><i class="fas fa-lock"></i><input type="password" placeholder="Enter password"></div></div>
+            <button type="submit" class="btn-main">Login</button>
+            <p class="auth-extra"><a href="forgot-password.html">Forgot Password?</a></p>
+        </form>
     </div>
-
-    <script>
-        function showAuth(type) {
-            const loginForm = document.getElementById('loginForm');
-            const registerForm = document.getElementById('registerForm');
-            const loginTab = document.getElementById('loginTab');
-            const registerTab = document.getElementById('registerTab');
-
-            if (type === 'login') {
-                loginForm.style.display = 'block';
-                registerForm.style.display = 'none';
-                loginTab.classList.add('active');
-                registerTab.classList.remove('active');
-            } else {
-                loginForm.style.display = 'none';
-                registerForm.style.display = 'block';
-                loginTab.classList.remove('active');
-                registerTab.classList.add('active');
-            }
-        }
-    </script>
-
 </body>
 </html>

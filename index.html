@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cholo - যাতায়াত হোক সহজ</title>
+    <title>Cholo - Moving Bangladesh</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="container">
+        <div class="container flex-nav">
             <h1 class="logo">cholo</h1>
-            <div class="nav-links-desktop">
-                <a href="#">Ride</a>
-                <a href="#">Delivery</a>
-                <a href="#">Logistics</a>
-            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ride.html">Ride</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+            </ul>
             <a href="login.html" class="btn-login-nav">Login</a>
         </div>
     </nav>
@@ -25,77 +25,35 @@
         <div class="container hero-grid">
             <div class="hero-text">
                 <h1>Moving <br><span>Bangladesh</span></h1>
-                <p>রিকশা, অটো বা ট্রলি—আপনার যখন যা প্রয়োজন, চলো আছে আপনার সাথে। দ্রুত ও নিরাপদ যাতায়াতের বিশ্বস্ত সঙ্গী।</p>
+                <p>Ride, Delivery, and Logistics - everything you need in one place. Trust Cholo for your everyday movement.</p>
                 <div class="app-badges">
                     <img src="https://pathao.com/wp-content/uploads/2019/03/google-play-badge.png" alt="Play Store">
                     <img src="https://pathao.com/wp-content/uploads/2019/03/app-store-badge.png" alt="App Store">
                 </div>
             </div>
-
             <div class="booking-card">
-                <div class="booking-header">
-                    <span class="active">Hire Vehicle</span>
-                </div>
+                <div class="booking-header"><span class="active">Book Now</span></div>
                 <form>
-                    <div class="field">
-                        <label>Pickup</label>
-                        <div class="input-row">
-                            <i class="fas fa-circle-dot" style="color: #2ecc71;"></i>
-                            <input type="text" placeholder="Enter Pickup Location">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Destination</label>
-                        <div class="input-row">
-                            <i class="fas fa-location-dot" style="color: #e51b23;"></i>
-                            <input type="text" placeholder="Enter Destination">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Vehicle Type</label>
-                        <div class="input-row">
-                            <i class="fas fa-truck-pickup"></i>
-                            <select>
-                                <option>Rickshaw</option>
-                                <option>Auto-Rickshaw</option>
-                                <option>Trolley</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-main">Request Ride</button>
+                    <div class="field"><label>Pickup Location</label><div class="input-row"><i class="fas fa-circle-dot"></i><input type="text" placeholder="Enter Pickup Address"></div></div>
+                    <div class="field"><label>Destination</label><div class="input-row"><i class="fas fa-location-dot"></i><input type="text" placeholder="Enter Destination"></div></div>
+                    <button type="button" class="btn-main">Check Fare</button>
                 </form>
             </div>
         </div>
     </section>
 
     <section class="services container">
-        <h2>আমাদের সার্ভিসসমূহ</h2>
+        <h2 class="section-title">Our Services</h2>
         <div class="service-grid">
-            <div class="s-card">
-                <i class="fas fa-bicycle"></i>
-                <h3>রিকশা</h3>
-                <p>গলির রাস্তায় দ্রুত যাতায়াত।</p>
-            </div>
-            <div class="s-card">
-                <i class="fas fa-motorcycle"></i>
-                <h3>অটো</h3>
-                <p>সাশ্রয়ী ও আরামদায়ক ট্রিপ।</p>
-            </div>
-            <div class="s-card">
-                <i class="fas fa-truck"></i>
-                <h3>ট্রলি</h3>
-                <p>ভারী মালামাল বহনে বিশ্বস্ত।</p>
-            </div>
+            <div class="s-card"><i class="fas fa-bicycle"></i><h3>Rickshaw</h3><p>Fast & narrow-lane friendly rides.</p></div>
+            <div class="s-card"><i class="fas fa-motorcycle"></i><h3>Auto</h3><p>Safe & comfortable city travel.</p></div>
+            <div class="s-card"><i class="fas fa-truck"></i><h3>Trolley</h3><p>Moving goods made easy.</p></div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Cholo Technologies Ltd.</p>
+        <div class="container"><p>&copy; 2026 Cholo Technologies Ltd. | Moving Bangladesh Forward</p></div>
     </footer>
 
 </body>
 </html>
-<a href="index.html">Home</a>
-<a href="ride.html">Ride</a>
-<a href="delivery.html">Delivery</a>
-

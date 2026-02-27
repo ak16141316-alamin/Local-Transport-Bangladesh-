@@ -3,140 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cholo | Moving Bangladesh Together</title>
+    <title>Cholo | Secure Authentication</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="auth-page">
 
-    <header class="main-header">
-        <div class="container flex-nav">
-            <a href="index.html" class="logo">cholo</a>
-            <nav class="desktop-menu">
-                <ul class="nav-list">
-                    <li><a href="index.html">Home</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="drop-link">Daily Movement <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-content">
-                            <li><a href="ride.html"><i class="fas fa-motorcycle"></i> Cholo Bike</a></li>
-                            <li><a href="ride.html"><i class="fas fa-car"></i> Cholo Car</a></li>
-                            <li><a href="ride.html"><i class="fas fa-bicycle"></i> Cholo Rickshaw</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="drop-link">Logistics <i class="fas fa-chevron-down"></i></a>
-                        <ul class="dropdown-content">
-                            <li><a href="delivery.html"><i class="fas fa-box"></i> Personal Parcel</a></li>
-                            <li><a href="delivery.html"><i class="fas fa-truck-moving"></i> Cholo Trolley</a></li>
-                            <li><a href="delivery.html"><i class="fas fa-store"></i> Business Delivery</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Food Delivery</a></li>
-                    <li><a href="login.html">Become a Captain</a></li>
-                </ul>
-            </nav>
-            <div class="header-right">
-                <a href="login.html" class="btn-login-nav">Sign In</a>
-            </div>
-        </div>
-    </header>
-
-    <section class="hero-huge">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <div class="glow-badge">#1 Logistics Platform in BD</div>
-                <h1>Anywhere. <br><span>Everywhere.</span></h1>
-                <p>The most reliable way to travel, send parcels, and grow your business across the 64 districts of Bangladesh.</p>
-                <div class="hero-cta-group">
-                    <button class="btn-main-large">Download Now</button>
-                    <button class="btn-outline-large">Learn More</button>
+    <div class="auth-wrapper">
+        <div class="auth-container-large">
+            <div class="auth-header">
+                <a href="index.html" class="logo">cholo</a>
+                <div class="auth-toggle">
+                    <button id="loginBtn" class="active" onclick="toggleAuth('login')">Login</button>
+                    <button id="regBtn" onclick="toggleAuth('register')">Create Account</button>
                 </div>
             </div>
-            <div class="booking-card-huge">
-                <div class="card-tabs">
-                    <span class="tab-active">Ride</span>
-                    <span>Delivery</span>
-                    <span>Trolley</span>
+
+            <form id="loginSection" class="auth-form active">
+                <div class="form-title">
+                    <h2>Welcome Back</h2>
+                    <p>Enter your credentials to access your account</p>
                 </div>
-                <div class="form-wrapper">
-                    <div class="field"><label>Where to pickup?</label><div class="input-row"><i class="fas fa-search"></i><input type="text" placeholder="Current Location"></div></div>
-                    <div class="field"><label>Where to drop?</label><div class="input-row"><i class="fas fa-map-marker-alt"></i><input type="text" placeholder="Dropoff Location"></div></div>
-                    <button class="btn-main">Calculate Estimate Fare</button>
+                <div class="input-grid">
+                    <div class="field">
+                        <label>Email or Phone</label>
+                        <div class="input-row">
+                            <i class="fas fa-envelope"></i>
+                            <input type="text" placeholder="example@mail.com" required>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <div class="input-row">
+                            <i class="fas fa-shield-halved"></i>
+                            <input type="password" placeholder="••••••••" required>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </section>
+                <div class="form-help">
+                    <label><input type="checkbox"> Keep me logged in</label>
+                    <a href="forgot-password.html">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn-main">Secure Login</button>
+            </form>
 
-    <section class="partners-section">
-        <div class="container">
-            <p>Empowering over 1,000,000+ Journeys daily</p>
-            <div class="logo-flex">
-                <i class="fab fa-google"></i> <i class="fab fa-apple"></i> <i class="fab fa-stripe"></i> <i class="fab fa-uber"></i> <i class="fab fa-fedex"></i>
-            </div>
-        </div>
-    </section>
+            <form id="regSection" class="auth-form">
+                <div class="form-title">
+                    <h2>Join Cholo</h2>
+                    <p>Fill in all the details to get started with your journey</p>
+                </div>
+                <div class="input-grid-2-col">
+                    <div class="field">
+                        <label>Full Name</label>
+                        <div class="input-row"><i class="fas fa-user"></i><input type="text" placeholder="John Doe" required></div>
+                    </div>
+                    <div class="field">
+                        <label>Phone Number</label>
+                        <div class="input-row"><i class="fas fa-phone"></i><input type="tel" placeholder="+880 1XXX-XXXXXX" required></div>
+                    </div>
+                    <div class="field">
+                        <label>Email Address</label>
+                        <div class="input-row"><i class="fas fa-at"></i><input type="email" placeholder="john@example.com" required></div>
+                    </div>
+                    <div class="field">
+                        <label>Date of Birth</label>
+                        <div class="input-row"><i class="fas fa-calendar"></i><input type="date" required></div>
+                    </div>
+                    <div class="field">
+                        <label>Gender</label>
+                        <div class="input-row">
+                            <i class="fas fa-venus-mars"></i>
+                            <select required>
+                                <option value="">Select Gender</option>
+                                <option>Male</option>
+                                <option>Female</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>City / Location</label>
+                        <div class="input-row"><i class="fas fa-city"></i><input type="text" placeholder="Dhaka, Bangladesh" required></div>
+                    </div>
+                </div>
 
-    <section class="stats-section">
-        <div class="container impact-grid">
-            <div class="impact-card"><h2>50M+</h2><p>Successful Rides</p></div>
-            <div class="impact-card"><h2>12M+</h2><p>Parcels Delivered</p></div>
-            <div class="impact-card"><h2>500k+</h2><p>Captain Partners</p></div>
-            <div class="impact-card"><h2>24/7</h2><p>Live Support</p></div>
-        </div>
-    </section>
+                <div class="field password-strength-section">
+                    <label>Create Hard Password</label>
+                    <div class="input-row">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="p-input" placeholder="Strong Password (Min 8 characters)" required>
+                    </div>
+                    <div class="strength-meter">
+                        <div class="meter-bar"><div class="fill"></div></div>
+                        <p id="p-msg">Password must include Uppercase, Lowercase, Number & Symbol</p>
+                    </div>
+                </div>
 
-    <section class="detailed-services container">
-        <h2 class="section-big-title">Services Built for <span>Bangladesh</span></h2>
-        <div class="long-service-card">
-            <div class="l-text">
-                <h3>Cholo Drive</h3>
-                <p>Beat the traffic with our bikes or travel in comfort with our AC cars. We have the widest range of vehicles for every budget.</p>
-                <a href="ride.html">Book a Trip <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="l-img"><i class="fas fa-car-side"></i></div>
-        </div>
-        <div class="long-service-card reverse">
-            <div class="l-text">
-                <h3>Cholo Logistics</h3>
-                <p>From a small document to heavy factory goods, our logistics team and trolleys ensure safe movement of your assets.</p>
-                <a href="delivery.html">Learn More <i class="fas fa-arrow-right"></i></a>
-            </div>
-            <div class="l-img"><i class="fas fa-truck-fast"></i></div>
-        </div>
-    </section>
+                <div class="field">
+                    <label>Confirm Password</label>
+                    <div class="input-row"><i class="fas fa-check-double"></i><input type="password" placeholder="Repeat Password" required></div>
+                </div>
 
-    <section class="safety-huge">
-        <div class="container flex-safety">
-            <div class="safety-content">
-                <h2>Our <span>Safety</span> First <br>Approach</h2>
-                <div class="safe-item"><i class="fas fa-user-check"></i><div><h4>Verified Drivers</h4><p>Every captain undergoes rigorous background checks.</p></div></div>
-                <div class="safe-item"><i class="fas fa-shield-alt"></i><div><h4>Insurance Cover</h4><p>Every ride and parcel is insured against accidents.</p></div></div>
-                <div class="safe-item"><i class="fas fa-headset"></i><div><h4>SOS 24/7</h4><p>Emergency assistance is just one tap away in the app.</p></div></div>
-            </div>
+                <div class="form-help">
+                    <label><input type="checkbox" required> I agree to the <a href="#">Terms & Conditions</a></label>
+                </div>
+                <button type="submit" class="btn-main">Create My Account</button>
+            </form>
         </div>
-    </section>
+    </div>
 
-    <section class="earning-cta">
-        <div class="container earning-box">
-            <h2>Make Money with <span>Cholo</span></h2>
-            <p>Drive your own vehicle or manage a fleet and earn up to ৳50,000 per month.</p>
-            <button class="btn-main-large">Register as a Captain</button>
-        </div>
-    </section>
+    <script>
+        function toggleAuth(type) {
+            const lForm = document.getElementById('loginSection');
+            const rForm = document.getElementById('regSection');
+            const lBtn = document.getElementById('loginBtn');
+            const rBtn = document.getElementById('regBtn');
 
-    <footer class="mega-footer">
-        <div class="container footer-top">
-            <div class="f-col">
-                <h1 class="logo">cholo</h1>
-                <p>Moving millions of people and parcels with love and technology.</p>
-                <div class="socials"><i class="fab fa-facebook"></i> <i class="fab fa-linkedin"></i> <i class="fab fa-youtube"></i></div>
-            </div>
-            <div class="f-col"><h3>Services</h3><a href="ride.html">Ride Sharing</a><a href="delivery.html">Logistics</a><a href="#">Trolley</a></div>
-            <div class="f-col"><h3>About</h3><a href="#">Our Story</a><a href="#">Safety</a><a href="#">Careers</a></div>
-            <div class="f-col"><h3>Help</h3><a href="#">Support</a><a href="#">Terms</a><a href="#">Privacy</a></div>
-        </div>
-        <div class="footer-bottom"><p>&copy; 2026 Cholo Technologies. Designed for Realme C85 Pro.</p></div>
-    </footer>
-
+            if(type === 'login') {
+                lForm.classList.add('active');
+                rForm.classList.remove('active');
+                lBtn.classList.add('active');
+                rBtn.classList.remove('active');
+            } else {
+                rForm.classList.add('active');
+                lForm.classList.remove('active');
+                rBtn.classList.add('active');
+                lBtn.classList.remove('active');
+            }
+        }
+    </script>
 </body>
 </html>

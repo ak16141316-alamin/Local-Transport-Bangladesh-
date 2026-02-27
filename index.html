@@ -3,134 +3,82 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cholo | Secure Authentication</title>
+    <title>Cholo - Moving Bangladesh Forward</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body class="auth-page">
+<body>
+    <nav class="navbar">
+        <div class="container flex-nav">
+            <h1 class="logo">cholo</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ride.html">Ride</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+            </ul>
+            <a href="login.html" class="btn-login-nav">Login</a>
+        </div>
+    </nav>
 
-    <div class="auth-wrapper">
-        <div class="auth-container-large">
-            <div class="auth-header">
-                <a href="index.html" class="logo">cholo</a>
-                <div class="auth-toggle">
-                    <button id="loginBtn" class="active" onclick="toggleAuth('login')">Login</button>
-                    <button id="regBtn" onclick="toggleAuth('register')">Create Account</button>
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-text">
+                <h1>Moving <br><span>Bangladesh</span></h1>
+                <p>The largest ride-sharing and logistics platform in the country. We are here to make your life easier every day.</p>
+                <div class="app-badges">
+                    <img src="https://pathao.com/wp-content/uploads/2019/03/google-play-badge.png" alt="Play Store">
+                    <img src="https://pathao.com/wp-content/uploads/2019/03/app-store-badge.png" alt="App Store">
                 </div>
             </div>
-
-            <form id="loginSection" class="auth-form active">
-                <div class="form-title">
-                    <h2>Welcome Back</h2>
-                    <p>Enter your credentials to access your account</p>
-                </div>
-                <div class="input-grid">
-                    <div class="field">
-                        <label>Email or Phone</label>
-                        <div class="input-row">
-                            <i class="fas fa-envelope"></i>
-                            <input type="text" placeholder="example@mail.com" required>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Password</label>
-                        <div class="input-row">
-                            <i class="fas fa-shield-halved"></i>
-                            <input type="password" placeholder="••••••••" required>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-help">
-                    <label><input type="checkbox"> Keep me logged in</label>
-                    <a href="forgot-password.html">Forgot Password?</a>
-                </div>
-                <button type="submit" class="btn-main">Secure Login</button>
-            </form>
-
-            <form id="regSection" class="auth-form">
-                <div class="form-title">
-                    <h2>Join Cholo</h2>
-                    <p>Fill in all the details to get started with your journey</p>
-                </div>
-                <div class="input-grid-2-col">
-                    <div class="field">
-                        <label>Full Name</label>
-                        <div class="input-row"><i class="fas fa-user"></i><input type="text" placeholder="John Doe" required></div>
-                    </div>
-                    <div class="field">
-                        <label>Phone Number</label>
-                        <div class="input-row"><i class="fas fa-phone"></i><input type="tel" placeholder="+880 1XXX-XXXXXX" required></div>
-                    </div>
-                    <div class="field">
-                        <label>Email Address</label>
-                        <div class="input-row"><i class="fas fa-at"></i><input type="email" placeholder="john@example.com" required></div>
-                    </div>
-                    <div class="field">
-                        <label>Date of Birth</label>
-                        <div class="input-row"><i class="fas fa-calendar"></i><input type="date" required></div>
-                    </div>
-                    <div class="field">
-                        <label>Gender</label>
-                        <div class="input-row">
-                            <i class="fas fa-venus-mars"></i>
-                            <select required>
-                                <option value="">Select Gender</option>
-                                <option>Male</option>
-                                <option>Female</option>
-                                <option>Other</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>City / Location</label>
-                        <div class="input-row"><i class="fas fa-city"></i><input type="text" placeholder="Dhaka, Bangladesh" required></div>
-                    </div>
-                </div>
-
-                <div class="field password-strength-section">
-                    <label>Create Hard Password</label>
-                    <div class="input-row">
-                        <i class="fas fa-lock"></i>
-                        <input type="password" id="p-input" placeholder="Strong Password (Min 8 characters)" required>
-                    </div>
-                    <div class="strength-meter">
-                        <div class="meter-bar"><div class="fill"></div></div>
-                        <p id="p-msg">Password must include Uppercase, Lowercase, Number & Symbol</p>
-                    </div>
-                </div>
-
-                <div class="field">
-                    <label>Confirm Password</label>
-                    <div class="input-row"><i class="fas fa-check-double"></i><input type="password" placeholder="Repeat Password" required></div>
-                </div>
-
-                <div class="form-help">
-                    <label><input type="checkbox" required> I agree to the <a href="#">Terms & Conditions</a></label>
-                </div>
-                <button type="submit" class="btn-main">Create My Account</button>
-            </form>
+            <div class="booking-card">
+                <div class="booking-header"><span class="active">Instant Booking</span></div>
+                <form>
+                    <div class="field"><label>Pickup Point</label><div class="input-row"><i class="fas fa-circle-dot"></i><input type="text" placeholder="Where are you?"></div></div>
+                    <div class="field"><label>Dropoff Point</label><div class="input-row"><i class="fas fa-location-dot"></i><input type="text" placeholder="Where to go?"></div></div>
+                    <button type="button" class="btn-main">Get Started</button>
+                </form>
+            </div>
         </div>
-    </div>
+    </section>
 
-    <script>
-        function toggleAuth(type) {
-            const lForm = document.getElementById('loginSection');
-            const rForm = document.getElementById('regSection');
-            const lBtn = document.getElementById('loginBtn');
-            const rBtn = document.getElementById('regBtn');
+    <section class="container" style="padding: 60px 0; text-align: center;">
+        <div class="service-grid">
+            <div class="s-card"><h2>10M+</h2><p>App Downloads</p></div>
+            <div class="s-card"><h2>500K+</h2><p>Expert Drivers</p></div>
+            <div class="s-card"><h2>64</h2><p>Districts Covered</p></div>
+        </div>
+    </section>
 
-            if(type === 'login') {
-                lForm.classList.add('active');
-                rForm.classList.remove('active');
-                lBtn.classList.add('active');
-                rBtn.classList.remove('active');
-            } else {
-                rForm.classList.add('active');
-                lForm.classList.remove('active');
-                rBtn.classList.add('active');
-                lBtn.classList.remove('active');
-            }
-        }
-    </script>
+    <section class="services container">
+        <h2 class="section-title">How it Works</h2>
+        <div class="service-grid">
+            <div class="s-card">
+                <i class="fas fa-mobile-screen"></i>
+                <h3>1. Book in App</h3>
+                <p>Select your service and set your pickup/dropoff location.</p>
+            </div>
+            <div class="s-card">
+                <i class="fas fa-user-check"></i>
+                <h3>2. Get Matched</h3>
+                <p>We will find the nearest Cholo Captain for you instantly.</p>
+            </div>
+            <div class="s-card">
+                <i class="fas fa-smile"></i>
+                <h3>3. Enjoy Trip</h3>
+                <p>Travel safely and pay easily through cash or digital payment.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="service-grid" style="text-align: left; padding-bottom: 30px;">
+                <div><h3>Company</h3><p>About Us</p><p>Careers</p></div>
+                <div><h3>Services</h3><p>Ride</p><p>Delivery</p></div>
+                <div><h3>Support</h3><p>Help Center</p><p>Privacy Policy</p></div>
+            </div>
+            <p>&copy; 2026 Cholo Technologies Ltd.</p>
+        </div>
+    </footer>
 </body>
 </html>

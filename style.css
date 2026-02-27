@@ -1,94 +1,98 @@
-/* --- Global Reset & Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@700;900&display=swap');
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@900&display=swap');
 
 :root {
     --primary: #e51b23;
-    --dark: #000000;
-    --light-dark: #111111;
-    --text-muted: #888888;
+    --dark-bg: #000000;
+    --card-bg: #111111;
+    --text-color: #ffffff;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
-body { background: var(--dark); color: #fff; line-height: 1.6; overflow-x: hidden; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
-/* --- Fixed Navigation Bar & Dropdown --- */
+body { background-color: var(--dark-bg); color: var(--text-color); overflow-x: hidden; }
+
+.container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+/* --- Fixed & Clean Navigation --- */
 .main-header {
-    background: rgba(0, 0, 0, 0.95);
+    background: #000;
     padding: 15px 0;
     position: fixed;
-    top: 0; width: 100%; z-index: 9999;
+    top: 0; width: 100%; z-index: 10000;
     border-bottom: 1px solid #222;
 }
 
 .flex-nav { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: 'Poppins', sans-serif; color: var(--primary); font-size: 28px; text-decoration: none; font-weight: 900; }
 
-.nav-list { display: flex; list-style: none; gap: 20px; }
+.logo { font-family: 'Poppins'; color: var(--primary); font-size: 26px; text-decoration: none; text-transform: lowercase; }
+
+/* Horizontal Menu Fix */
+.nav-list { display: flex; list-style: none; align-items: center; gap: 20px; }
+
 .nav-list li { position: relative; }
-.nav-list li a { color: #fff; text-decoration: none; font-weight: 600; font-size: 14px; padding: 10px; }
 
-/* Dropdown Logic */
+.nav-list li a { 
+    color: #fff; text-decoration: none; font-size: 14px; font-weight: 600; 
+    display: flex; align-items: center; gap: 5px;
+}
+
+/* Dropdown styling (Desktop focus) */
 .dropdown-content {
     position: absolute; top: 100%; left: 0; background: #1a1a1a;
-    width: 200px; padding: 10px 0; border-radius: 8px;
-    display: none; border: 1px solid #333;
+    width: 200px; padding: 10px 0; border-radius: 8px; border: 1px solid #333;
+    display: none; list-style: none;
 }
+
 .dropdown:hover .dropdown-content { display: block; }
-.dropdown-content li a { display: block; padding: 10px 20px; }
-.dropdown-content li a:hover { background: var(--primary); }
 
-.btn-login-nav { background: var(--primary); color: #fff; padding: 8px 20px; border-radius: 5px; text-decoration: none; font-weight: 800; }
+.dropdown-content li a { padding: 8px 20px; font-size: 13px; color: #ccc; }
+.dropdown-content li a:hover { color: var(--primary); }
 
-/* --- Hero Section Adjustment --- */
-.hero-huge { padding: 150px 0 80px; text-align: left; }
-.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
-.hero-text h1 { font-size: 70px; font-family: 'Poppins'; line-height: 1.1; margin-bottom: 20px; }
+.header-right .btn-login-nav {
+    background: var(--primary); color: #fff; padding: 8px 18px; 
+    border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 13px;
+}
+
+/* --- Hero Section Mobile Fix --- */
+.hero-huge { padding: 120px 0 50px; }
+
+.hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+
+.hero-text h1 { font-family: 'Poppins'; font-size: 60px; line-height: 1; margin-bottom: 20px; }
 .hero-text h1 span { color: var(--primary); }
-.hero-cta-group { display: flex; gap: 15px; margin-top: 30px; }
+.hero-text p { color: #888; margin-bottom: 30px; font-size: 16px; }
 
-/* --- Cards & Forms --- */
-.booking-card-huge { background: #fff; padding: 30px; border-radius: 20px; color: #333; }
-.field { margin-bottom: 20px; }
-.field label { font-size: 12px; font-weight: 800; color: #666; display: block; margin-bottom: 5px; }
-.input-row { display: flex; align-items: center; background: #f5f5f5; padding: 12px; border-radius: 8px; border: 1px solid #ddd; }
-.input-row i { margin-right: 10px; color: var(--primary); }
-.input-row input { border: none; background: transparent; width: 100%; outline: none; }
-.btn-main { width: 100%; background: var(--dark); color: #fff; padding: 15px; border: none; border-radius: 8px; font-weight: 800; cursor: pointer; }
+.hero-cta-group { display: flex; gap: 15px; flex-wrap: wrap; }
 
-/* --- Statistics & Impact --- */
-.stats-section { padding: 60px 0; background: #080808; text-align: center; }
-.impact-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.impact-card h2 { font-size: 40px; color: var(--primary); }
-
-/* --- Detailed Services (Big Cards) --- */
-.long-service-card { display: flex; background: var(--light-dark); margin-bottom: 30px; border-radius: 20px; overflow: hidden; align-items: center; }
-.long-service-card.reverse { flex-direction: row-reverse; }
-.l-text { padding: 50px; flex: 1; }
-.l-img { flex: 1; font-size: 100px; text-align: center; background: #151515; padding: 50px; }
-
-/* --- Footer --- */
-.mega-footer { padding: 80px 0 30px; border-top: 1px solid #222; }
-.footer-top { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; }
-.f-col h3 { margin-bottom: 20px; color: var(--primary); }
-.f-col a { display: block; color: #888; text-decoration: none; margin-bottom: 10px; }
-
-/* --- RESPONSIVE FIXES --- */
+/* --- Mobile / Tablet Responsiveness (THE FIX) --- */
 @media (max-width: 992px) {
     .hero-grid { grid-template-columns: 1fr; text-align: center; }
-    .hero-text h1 { font-size: 50px; }
+    .hero-text h1 { font-size: 45px; }
     .hero-cta-group { justify-content: center; }
-    .impact-grid { grid-template-columns: 1fr 1fr; }
+    .nav-list { display: none; } /* মোবাইলে মেনু হিজিবিজি কমাবে */
+    .logo { font-size: 22px; }
 }
 
-@media (max-width: 768px) {
-    .nav-list { display: none; } /* Mobile toggle button is needed for full mobile menu */
-    .long-service-card, .long-service-card.reverse { flex-direction: column; }
-    .footer-top { grid-template-columns: 1fr 1fr; }
-    .hero-text h1 { font-size: 40px; }
+/* Booking Card (The White Box) */
+.booking-card-huge { 
+    background: #fff; color: #000; padding: 25px; border-radius: 15px; 
+    width: 100%; max-width: 450px; margin: 0 auto;
 }
 
-@media (max-width: 480px) {
-    .impact-grid { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr; text-align: center; }
+.input-row { 
+    background: #f0f0f0; border-radius: 8px; padding: 12px; 
+    display: flex; align-items: center; margin-bottom: 15px; 
 }
+
+.input-row input { border: none; background: transparent; width: 100%; outline: none; margin-left: 10px; }
+
+.btn-main { 
+    width: 100%; background: #000; color: #fff; padding: 15px; 
+    border: none; border-radius: 8px; font-weight: bold; cursor: pointer; 
+}
+
+/* General spacing for sections */
+section { padding: 60px 0; }
+.stats-section { background: #080808; text-align: center; }
+.impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; }

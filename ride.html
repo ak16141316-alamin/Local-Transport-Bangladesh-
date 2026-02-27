@@ -3,109 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ride with Cholo - Best Transport in Bangladesh</title>
+    <title>Ride | Cholo</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-
     <nav class="navbar">
-        <div class="container">
+        <div class="container flex-nav">
             <h1 class="logo">cholo</h1>
-            <div class="nav-links-desktop">
-                <a href="index.html">Home</a>
-                <a href="ride.html" style="color: var(--cholo-red);">Ride</a>
-                <a href="#">Delivery</a>
-            </div>
-            <a href="login.html" class="btn-login-nav">Login</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="ride.html" style="color:var(--cholo-red)">Ride</a></li>
+                <li><a href="delivery.html">Delivery</a></li>
+            </ul>
         </div>
     </nav>
 
-    <section class="hero" style="min-height: 70vh; background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1558981403-c5f91ad9308b?auto=format&fit=crop&w=1350&q=80');">
-        <div class="container hero-grid">
-            <div class="hero-text">
-                <h1>Reliable <span>Rides</span> <br>For Everyone</h1>
-                <p>From short narrow lanes to long city roads, Cholo's wide range of vehicles ensure you reach your destination safely and on time.</p>
-            </div>
-
-            <div class="booking-card">
-                <div class="booking-header">
-                    <span class="active">Book a Ride</span>
-                </div>
-                <form>
-                    <div class="field">
-                        <label>From</label>
-                        <div class="input-row">
-                            <i class="fas fa-circle-dot" style="color: #2ecc71;"></i>
-                            <input type="text" placeholder="Pickup point">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>To</label>
-                        <div class="input-row">
-                            <i class="fas fa-location-dot" style="color: #e51b23;"></i>
-                            <input type="text" placeholder="Destination">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Select Vehicle</label>
-                        <div class="input-row">
-                            <i class="fas fa-taxi"></i>
-                            <select>
-                                <option>Rickshaw (Economy)</option>
-                                <option>Auto-Rickshaw (Standard)</option>
-                                <option>Mini Truck (Trolley)</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-main">Check Fare</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <section class="services container" style="padding: 100px 20px;">
-        <h2 style="font-size: 36px; margin-bottom: 20px;">Why Choose Cholo Rides?</h2>
-        <p style="color: #888; margin-bottom: 50px;">We move people and things more efficiently.</p>
-        
-        <div class="service-grid">
-            <div class="s-card">
-                <i class="fas fa-bicycle"></i>
-                <h3>Cholo Rickshaw</h3>
-                <p>Perfect for those short distances through the narrowest streets where cars can't reach. Affordable and eco-friendly.</p>
-                <span style="color: var(--cholo-red); font-weight: bold; margin-top: 15px; display: block;">Starts from ৳20</span>
-            </div>
-
-            <div class="s-card">
-                <i class="fas fa-motorcycle"></i>
-                <h3>Cholo Auto</h3>
-                <p>The fastest way to beat city traffic. Our professional auto-drivers ensure a smooth and breezy journey for up to 3 people.</p>
-                <span style="color: var(--cholo-red); font-weight: bold; margin-top: 15px; display: block;">Starts from ৳50</span>
-            </div>
-
-            <div class="s-card">
-                <i class="fas fa-shield-alt"></i>
-                <h3>Safety First</h3>
-                <p>All our rides are tracked via GPS. With our 24/7 support and SOS feature, your safety is our top priority.</p>
-                <span style="color: var(--cholo-red); font-weight: bold; margin-top: 15px; display: block;">24/7 Support</span>
-            </div>
-        </div>
-    </section>
-
-    <section style="background: #111; padding: 80px 0; text-align: center;">
+    <section class="hero-small" style="background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1558981403-c5f91ad9308b?w=1200');">
         <div class="container">
-            <h2 style="font-size: 40px; margin-bottom: 20px;">Ready to go?</h2>
-            <p style="color: #ccc; margin-bottom: 30px;">Download the Cholo app and book your ride in seconds.</p>
-            <div class="app-badges">
-                <img src="https://pathao.com/wp-content/uploads/2019/03/google-play-badge.png" alt="Google Play" style="height: 50px;">
-                <img src="https://pathao.com/wp-content/uploads/2019/03/app-store-badge.png" alt="App Store" style="height: 50px;">
-            </div>
+            <h1>Cholo <span>Ride</span></h1>
+            <p>Affordable transportation for everyone, everywhere.</p>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Cholo Technologies Ltd. | Moving Bangladesh Forward</p>
-    </footer>
-
+    <div class="container page-content">
+        <h2>Available Rides</h2>
+        <div class="service-grid">
+            <div class="s-card"><h3>Rickshaw</h3><p>Starts at ৳20</p></div>
+            <div class="s-card"><h3>Auto</h3><p>Starts at ৳50</p></div>
+        </div>
+    </div>
 </body>
-              </html>
+</html>
